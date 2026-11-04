@@ -1253,7 +1253,7 @@ const jade: Palette = {"from": "#03150f", "via": "#0d5a40", "to": "#050a08", "ac
 const amber: Palette = {"from": "#1c1003", "via": "#6b3c06", "to": "#0a0806", "accent": "#ffb547"};
 
 export type ProfileId = 'jv' | 'recruiter' | 'developer' | 'creative';
-export type SectionId = 'about' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'story';
+export type SectionId = 'about' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'story' | 'assistant';
 
 export const viewerProfiles: {
   id: ProfileId;
@@ -1267,7 +1267,7 @@ export const viewerProfiles: {
     name: 'JV',
     blurb: 'The full series, in order',
     color: '#e5132b',
-    order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'story'],
+    order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'assistant', 'assistant', 'story'],
   },
   {
     id: 'recruiter',
@@ -1281,14 +1281,14 @@ export const viewerProfiles: {
     name: 'Developer',
     blurb: 'Projects, stack & GitHub first',
     color: '#46e3a8',
-    order: ['originals', 'skills', 'journey', 'moments', 'about', 'picks', 'story'],
+    order: ['originals', 'skills', 'journey', 'moments', 'about', 'picks', 'assistant', 'assistant', 'story'],
   },
   {
     id: 'creative',
     name: 'Creative',
     blurb: 'The story arc & highlights first',
     color: '#ffb547',
-    order: ['journey', 'picks', 'originals', 'moments', 'about', 'skills', 'story'],
+    order: ['journey', 'picks', 'originals', 'moments', 'about', 'skills', 'assistant', 'assistant', 'story'],
   },
 ];
 
@@ -1299,6 +1299,7 @@ export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: s
   picks: { nav: 'Top Picks', card: 'Top Picks', meta: 'Top 10 from the resume', palette: jade },
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Categories`, palette: ocean },
   moments: { nav: 'Moments', card: 'My Achievements', meta: `${achievements.length} Moments • ${certifications.length} Certifications`, palette: crimson },
+  assistant: { nav: 'Ask AI', card: 'Ask My AI Assistant', meta: 'Interactive portfolio guide', palette: crimson },
   story: { nav: 'Resume', card: 'The Full Story', meta: 'Resume • View & download', palette: violet },
 };
 
