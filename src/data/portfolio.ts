@@ -1267,28 +1267,28 @@ export const viewerProfiles: {
     name: 'JV',
     blurb: 'The full series, in order',
     color: '#e5132b',
-    order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'assistant', 'assistant', 'story'],
+    order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'assistant', 'story'],
   },
   {
     id: 'recruiter',
     name: 'Recruiter',
     blurb: 'Resume, achievements & skills first',
     color: '#4cc9ff',
-    order: ['story', 'moments', 'skills', 'originals', 'about', 'journey', 'picks'],
+    order: ['story', 'moments', 'skills', 'assistant', 'originals', 'about', 'journey', 'picks'],
   },
   {
     id: 'developer',
     name: 'Developer',
     blurb: 'Projects, stack & GitHub first',
     color: '#46e3a8',
-    order: ['originals', 'skills', 'journey', 'moments', 'about', 'picks', 'assistant', 'assistant', 'story'],
+    order: ['originals', 'skills', 'journey', 'moments', 'about', 'picks', 'assistant', 'story'],
   },
   {
     id: 'creative',
     name: 'Creative',
     blurb: 'The story arc & highlights first',
     color: '#ffb547',
-    order: ['journey', 'picks', 'originals', 'moments', 'about', 'skills', 'assistant', 'assistant', 'story'],
+    order: ['journey', 'picks', 'originals', 'moments', 'about', 'skills', 'assistant', 'story'],
   },
 ];
 
