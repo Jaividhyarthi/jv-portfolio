@@ -18,6 +18,7 @@ import Skills from './components/Skills';
 import Achievements from './components/Achievements';
 import ResumeSection from './components/ResumeViewer';
 import FinalCTA from './components/FinalCTA';
+import Assistant from './components/Assistant';
 import { EASE } from './components/fx';
 
 // Overlays are only needed on demand — split them out of the first load.
@@ -102,6 +103,7 @@ function Series() {
     skills: <Skills />,
     moments: <Achievements />,
     story: <ResumeSection onView={() => setResumeOpen(true)} />,
+    assistant: <Assistant />,
   };
 
   return (
