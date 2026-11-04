@@ -57,11 +57,11 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
       <div className="absolute inset-x-4 top-[8vh] z-10 text-center sm:top-[8vh]">
         <motion.h1
           className="font-display leading-[.82] tracking-[.025em] text-bone drop-shadow-[0_8px_45px_rgba(0,0,0,.85)]"
-          style={{ fontSize: 'clamp(5.8rem, 15vw, 13rem)' }}
+          style={{ fontSize: 'clamp(3.4rem, 10vw, 10rem)' }}
           initial={{ opacity: 0, y: -20, letterSpacing: '.2em' }}
           animate={{ opacity: 1, y: 0, letterSpacing: '.025em' }}
           transition={{ duration: 1.2 }}
-        >{profile.firstName}</motion.h1>
+        >{profile.fullName.split(' ')[0].toUpperCase()}</motion.h1>
         <motion.p
           className="mt-3 text-[10px] font-bold tracking-[.65em] text-crimson-2 sm:text-sm"
           initial={{ opacity: 0 }}
