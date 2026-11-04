@@ -88,6 +88,7 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
           <div aria-hidden className="absolute bottom-[8%] left-1/2 h-[78%] w-[78%] -translate-x-1/2 rounded-full border border-crimson-2/20 shadow-[0_0_120px_rgba(229,19,43,0.35),inset_0_0_80px_rgba(229,19,43,0.18)]" />
           <img
             src={profile.portrait.src}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'assets/jv-monogram.svg'; }}
             srcSet={profile.portrait.srcSet}
             sizes="(max-width: 1024px) 100vw, 54vw"
             alt={profile.portrait.alt}
