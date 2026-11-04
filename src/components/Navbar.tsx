@@ -77,6 +77,7 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
         </div>
 
         <div className="flex items-center gap-3">
+          <button type="button" onClick={() => go('assistant')} className="hidden rounded-full border border-crimson-2/50 bg-crimson/15 px-4 py-1.5 text-xs font-semibold tracking-[0.08em] text-bone transition hover:bg-crimson/30 sm:block">✦ ASK MY AI</button>
           <button
             type="button"
             onClick={() => go('contact')}
