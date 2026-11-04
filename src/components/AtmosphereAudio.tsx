@@ -29,7 +29,6 @@ export default function AtmosphereAudio() {
     lowpass.connect(master);
 
     const voices: OscillatorNode[] = [];
-    const gains: GainNode[] = [];
     // Dissonant low drones; subtle detuning creates a sinister beating texture.
     [55, 55.41, 82.1, 110.8, 164.4].forEach((freq, i) => {
       const osc = ctx.createOscillator();
@@ -40,7 +39,6 @@ export default function AtmosphereAudio() {
       osc.connect(gain).connect(lowpass);
       osc.start();
       voices.push(osc);
-      gains.push(gain);
     });
 
     const lfo = ctx.createOscillator();
