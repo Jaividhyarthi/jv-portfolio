@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { profile, projects, type ProfileId } from '../data/portfolio';
+import { projects, type ProfileId } from '../data/portfolio';
 import { useSmoothScroll } from '../hooks/smoothScroll';
 
 const specialties = [
@@ -51,7 +51,7 @@ export default function Hero({
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[.12] [background-image:radial-gradient(rgba(255,255,255,.5)_0.5px,transparent_0.5px)] [background-size:24px_24px]" />
 
       <div className="gutter relative mx-auto max-w-[1750px] pb-10 pt-[92px] sm:pt-[105px] lg:pt-[100px]">
-        <div className="grid min-h-[520px] items-center gap-6 lg:grid-cols-[1.02fr_.98fr] xl:min-h-[580px]">
+        <div className="grid min-h-[520px] items-center gap-6 lg:grid-cols-[1.02fr_.98fr] xl:min-h-[505px]">
           <motion.div
             initial={{ opacity: 0, x: -36 }}
             animate={{ opacity: 1, x: 0 }}
@@ -87,7 +87,7 @@ export default function Hero({
             initial={{ opacity: 0, x: 32, scale: .96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1.1, delay: .1 }}
-            className="relative mx-auto flex h-[370px] w-full max-w-[740px] items-end justify-center sm:h-[500px] lg:h-[600px]"
+            className="relative mx-auto flex h-[370px] w-full max-w-[740px] items-end justify-center sm:h-[500px] lg:h-[520px]"
           >
             {/* Glowing, circular film-poster halo. The photo itself is a transparent cutout. */}
             <div aria-hidden className="absolute left-1/2 top-[44%] h-[77%] max-h-[500px] w-[77%] max-w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff718c]/70 shadow-[0_0_30px_rgba(255,63,93,.3),0_0_125px_rgba(170,31,62,.24),inset_0_0_80px_rgba(255,61,90,.08)]" />
@@ -96,7 +96,7 @@ export default function Hero({
             <img
               src="/assets/jv-home-cutout.webp"
               alt="Portrait of Jaividhyarthi"
-              onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = profile.portrait.src; }}
+              onError={e => { e.currentTarget.onerror = null; e.currentTarget.style.visibility = 'hidden'; }}
               className="relative z-10 h-[100%] w-[80%] object-contain object-bottom drop-shadow-[0_14px_55px_rgba(0,0,0,.55)] [mask-image:linear-gradient(to_bottom,#000_0%,#000_72%,transparent_100%)]"
             />
             <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[18%] bg-gradient-to-t from-[#10080f] to-transparent" />
