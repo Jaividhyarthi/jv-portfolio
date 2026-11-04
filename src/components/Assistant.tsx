@@ -52,7 +52,7 @@ export default function Assistant() {
     setMessages(m => [...m, { from: 'visitor', text: trimmed }, { from: 'assistant', text: answer(trimmed) }]);
     setQuestion('');
   };
-  const submit = (e: FormEvent) => { e.preventDefault(); send(); };
+  const submit = (e: FormEvent) => { e.preventDefault(); send(); };\n  useEffect(() => {\n    const handle = (event: Event) => {\n      const question = (event as CustomEvent<string>).detail;\n      if (typeof question === 'string' && question.trim()) send(question);\n    };\n    window.addEventListener('jv-assistant-ask', handle);\n    return () => window.removeEventListener('jv-assistant-ask', handle);\n  });
 
   return (
     <div className="gutter mx-auto max-w-[1500px]">
