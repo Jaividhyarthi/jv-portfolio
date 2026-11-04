@@ -67,7 +67,7 @@ export const profile = {
   },
   "resumePdf": "assets/JV_Complete_Resume.pdf",
   "portrait": {
-    "src": "assets/jv-portrait.jpg",
+    "src": "/assets/jv-cutout.png",
     "srcSet": "",
     "alt": "Portrait of Jaividhyarthi"
   },
