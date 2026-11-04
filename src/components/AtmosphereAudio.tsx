@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * Place the music at public/assets/jv-background.mp3.
  * No generated drones or external music libraries.
  */
-const TRACK = '/assets/jv-background.mp3';
+const TRACK = `${import.meta.env.BASE_URL}assets/jv-background.mp3`;
 const VOLUME = 0.32;
 
 export default function AtmosphereAudio() {
