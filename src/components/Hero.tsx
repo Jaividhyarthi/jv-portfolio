@@ -38,15 +38,15 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
 
   const meta = [
     education[0].period.split(' – ')[0].split(' ')[1] + ' – Present',
-    'B.Tech AI & ML',
+    'B.Tech AI & DS',
     `${projects.length} Originals`,
     `${certifications.length} Certifications`,
   ];
 
   const floating = [
-    { text: education[0].score, sub: 'B.Tech AI & ML', pos: 'left-[2%] top-[30%]', depth: 1 },
+    { text: education[0].score, sub: 'B.Tech AI & DS', pos: 'left-[2%] top-[30%]', depth: 1 },
     { text: `${achievements[0].title}`, sub: achievements[0].org, pos: 'right-[0%] top-[18%]', depth: -1 },
-    { text: 'Java · React · Node.js', sub: 'Primary stack', pos: 'right-[4%] bottom-[24%]', depth: 0.6 },
+    { text: 'Python · React · FastAPI', sub: 'Primary stack', pos: 'right-[4%] bottom-[24%]', depth: 0.6 },
   ];
 
   return (
@@ -128,7 +128,7 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
         </motion.p>
 
         <motion.div variants={item} className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] font-medium text-mist">
-          <span className="rounded border border-white/25 px-1.5 py-px text-[10px] font-bold tracking-wider text-bone">AI·ML</span>
+          <span className="rounded border border-white/25 px-1.5 py-px text-[10px] font-bold tracking-wider text-bone">AI·DS</span>
           {meta.map((m, i) => (
             <span key={m} className="flex items-center gap-3">
               {i > 0 && <span className="h-1 w-1 rounded-full bg-smoke" />}
@@ -207,3 +207,4 @@ function FloatChip({ text, sub, pos, depth, index, mx, my }: { text: string; sub
     </motion.div>
   );
 }
+

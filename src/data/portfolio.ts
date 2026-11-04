@@ -1,70 +1,7 @@
-/**
- * Central portfolio data — generated from Sushmita's resume (Sushmita_dasari.pdf).
- * Every fact on the site comes from this file. Update it here and the whole site follows.
- * Nothing here should be added unless it appears on the resume.
- */
+/** JV portfolio content. Keep claims and credential links grounded in the resume. */
 
 export type Palette = { from: string; via: string; to: string; accent: string };
-
-export const profile = {
-  fullName: 'Dasari Venkata Ratna Sri Sushmita',
-  displayName: 'Sushmita Dasari',
-  firstName: 'SUSHMITA',
-  seriesTag: 'THE SERIES',
-  /** Fictional studio card shown at the very start of the opening sequence. */
-  originalLabel: 'A DASARI ORIGINAL',
-  role: 'Full-Stack Developer',
-  tagline: ['Full-Stack Developer', 'AI / ML', 'Java'],
-  intro:
-    'A B.Tech Artificial Intelligence & Machine Learning student (CGPA 9.10) and full-stack developer building AI-powered platforms, payment systems and multi-tenant SaaS with Java, Python, React, Node.js and Docker.',
-  location: 'Surampalem, Andhra Pradesh',
-  email: 'sushmitadasari17@gmail.com',
-  links: {
-    linkedin: 'https://www.linkedin.com/in/sushmita-dasari-227a40284/',
-    github: 'https://github.com/Sushmitadasari',
-  },
-  resumePdf: '/assets/Sushmita_Dasari_Resume.pdf',
-  portrait: {
-    src: '/assets/portrait-720.webp',
-    srcSet: '/assets/portrait-420.webp 420w, /assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w',
-    alt: 'Portrait of Sushmita Dasari',
-  },
-  interests: ['System Design', 'Cloud Computing (AWS)', 'Machine Learning'],
-};
-
-export const education = [
-  {
-    school: 'Aditya Engineering College',
-    place: 'Surampalem',
-    degree: 'Bachelor of Technology — Artificial Intelligence and Machine Learning',
-    period: 'October 2023 – Present',
-    score: 'CGPA 9.10',
-  },
-  {
-    school: 'Sri Chaitanya Junior College',
-    place: 'Kakinada',
-    degree: 'BIEAP — MPC',
-    period: 'June 2021 – May 2023',
-    score: 'Score 925/1000',
-  },
-];
-
-export const experience = [
-  {
-    company: 'Technical Hub Pvt Ltd',
-    role: 'Trainee',
-    place: 'Surampalem, AP',
-    period: 'May 2025 – June 2026',
-    points: [
-      'Completed one year of intensive Full-Stack Development (FSD) training covering frontend, backend, database integration, and deployment workflows.',
-      'Developed responsive and functional web applications by implementing user interfaces, server-side logic, and database connectivity.',
-      'Deployed and managed web applications while applying version control, debugging, and end-to-end development practices.',
-    ],
-  },
-];
-
 export type Metric = { value: string; label: string };
-
 export type Project = {
   id: string;
   title: string;
@@ -80,95 +17,6 @@ export type Project = {
   palette: Palette;
   motif: 'shield' | 'flow' | 'tenants';
 };
-
-export const projects: Project[] = [
-  {
-    id: 'policyguard-ai',
-    title: 'PolicyGuard AI',
-    year: '2026',
-    genre: 'AI • NLP • LLM',
-    logline: 'An AI-powered policy analysis platform across web, browser extension, mobile and desktop applications.',
-    stack: ['Python', 'NLP', 'LLM', 'REST API'],
-    build: [
-      'Built an AI-powered policy analysis platform across web, browser extension, mobile, and desktop applications, processing 500+ policy documents with 92% accuracy and reducing manual review time by 60% across 8 policy categories.',
-      'Engineered LLM-based Q&A, key-information extraction, and REST API integration for 10+ document types, enabling real-time policy insights and reducing decision turnaround time by 45%.',
-    ],
-    features: [
-      'LLM-based Q&A over policy documents',
-      'Key-information extraction',
-      'REST API integration for 10+ document types',
-      'Web, browser extension, mobile & desktop apps',
-      'Real-time policy insights',
-    ],
-    metrics: [
-      { value: '500+', label: 'policy documents processed' },
-      { value: '92%', label: 'accuracy' },
-      { value: '60%', label: 'less manual review time' },
-      { value: '45%', label: 'faster decision turnaround' },
-      { value: '8', label: 'policy categories' },
-    ],
-    // The resume links to https://github.com/Sushmitadasari/PolicyGuard-AI, which is not public yet (404).
-    // Add `github: 'https://github.com/Sushmitadasari/PolicyGuard-AI',` back once the repo is public.
-    palette: { from: '#2a0610', via: '#7a0f24', to: '#0b0710', accent: '#ff3d5a' },
-    motif: 'shield',
-  },
-  {
-    id: 'payment-gateway',
-    title: 'Payment Gateway System',
-    year: '2026',
-    genre: 'Full-Stack • Fintech • Microservices',
-    logline: 'A full-stack UPI & card payment gateway built around a strict payment state machine.',
-    stack: ['Node.js', 'Express', 'PostgreSQL', 'React', 'Docker'],
-    build: [
-      'Built full-stack UPI & card payment gateway processing 1,000+ transactions at 99.8% uptime with a strict payment state machine (processing → success/failed).',
-      'Dockerized microservice architecture cut deployment setup by 70%; backend optimizations reduced API response time by 40% and tripled throughput under load.',
-    ],
-    features: [
-      'UPI & card payments',
-      'Strict payment state machine (processing → success / failed)',
-      'Dockerized microservice architecture',
-      'Backend optimizations for load',
-    ],
-    metrics: [
-      { value: '1,000+', label: 'transactions processed' },
-      { value: '99.8%', label: 'uptime' },
-      { value: '70%', label: 'less deployment setup' },
-      { value: '40%', label: 'faster API response' },
-      { value: '3×', label: 'throughput under load' },
-    ],
-    github: 'https://github.com/Sushmitadasari/Payment-gateway-system-Project',
-    palette: { from: '#1a0d02', via: '#8a4a07', to: '#0a0806', accent: '#ffb547' },
-    motif: 'flow',
-  },
-  {
-    id: 'multi-tenant-saas',
-    title: 'Multi-Tenant SaaS Platform',
-    year: '2026',
-    genre: 'SaaS • Security • DevOps',
-    logline: 'Shared-database multi-tenancy with strict tenant isolation and 4-level JWT/RBAC.',
-    stack: ['Node.js', 'React', 'PostgreSQL', 'Docker Compose'],
-    build: [
-      'Architected shared-database multi-tenancy for 50+ concurrent tenants with strict tenant_id isolation and 4-level JWT/RBAC, achieving zero unauthorized-access incidents across 200+ users.',
-      'Implemented Docker Compose one-command deployment, reducing environment setup time from 45 minutes to under 2 minutes.',
-    ],
-    features: [
-      'Shared-database multi-tenancy',
-      'Strict tenant_id isolation',
-      '4-level JWT / RBAC',
-      'One-command Docker Compose deployment',
-    ],
-    metrics: [
-      { value: '50+', label: 'concurrent tenants' },
-      { value: '200+', label: 'users' },
-      { value: '0', label: 'unauthorized-access incidents' },
-      { value: '45m → <2m', label: 'environment setup time' },
-    ],
-    github: 'https://github.com/Sushmitadasari/Multi-Tenant-SaaS-Platform',
-    palette: { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' },
-    motif: 'tenants',
-  },
-];
-
 export type Achievement = {
   id: string;
   title: string;
@@ -177,180 +25,9 @@ export type Achievement = {
   laurel: string;
   link?: string;
 };
-
-export const achievements: Achievement[] = [
-  {
-    id: 'algouniversity',
-    title: 'Tech Fellow',
-    org: 'AlgoUniversity',
-    detail: 'Selected through competitive national selection — advanced DSA, algorithm optimization, and competitive coding.',
-    laurel: 'National Selection',
-  },
-  {
-    id: 'flipkart-grid',
-    title: 'Semi-Finalist',
-    org: 'Flipkart GRiD 7.0',
-    detail: 'Competed among top national engineering talent.',
-    laurel: 'Semi-Finalist',
-    link: 'https://drive.google.com/file/d/16pXA2hssyJqlYMr27wfi6U4bjKDLvh9f/view?usp=drive_link',
-  },
-  {
-    id: 'branch-topper',
-    title: 'AIML Branch Topper',
-    org: 'B.Tech AI & ML',
-    detail: '9.24 SGPA for the semester.',
-    laurel: 'Branch Topper',
-  },
-  {
-    id: 'competitive-coding',
-    title: '850+ Problems Solved',
-    org: 'LeetCode • GFG • CodeChef',
-    detail: 'LeetCode: 350+ DSA problems (peak rating 1442). GFG: 300+ problems (rating 1436). CodeChef: 200+ problems.',
-    laurel: 'Competitive Coding',
-  },
-  {
-    id: 'hackerrank',
-    title: '5-Star Badges',
-    org: 'HackerRank',
-    detail: '5-star badges in C, Python, Java, and SQL.',
-    laurel: 'Four Languages',
-  },
-];
-
-export type Certification = { issuer: string; name: string; link: string };
-
-export const certifications: Certification[] = [
-  { issuer: 'NPTEL', name: 'Database Management System', link: 'https://drive.google.com/file/d/1MqkJHchXeaGD4S8mzPmEGxEYddAsxAjN/view?usp=drive_link' },
-  { issuer: 'NPTEL', name: 'Fundamentals of Artificial Intelligence', link: 'https://drive.google.com/file/d/1GqyUQ-lrE-bHaN457t6fIdssgGG4HMXf/view?usp=drive_link' },
-  { issuer: 'NPTEL', name: 'Deep Learning', link: 'https://drive.google.com/file/d/1PWSRP5SQDPzkoTCF3A24eIJoSpTwgsff/view?usp=sharing' },
-  { issuer: 'AWS', name: 'AWS Certified AI Practitioner', link: 'https://drive.google.com/file/d/1h8e5p0a9T6f5gBaOP2ROfwWHZfkkspGn/view?usp=drive_link' },
-  { issuer: 'AWS', name: 'AWS Academy Graduate – Cloud Foundations', link: 'https://www.credly.com/badges/2d4810f9-3dbe-444d-99b9-61312ea5e7df/public_url' },
-  { issuer: 'MongoDB', name: 'MongoDB Certified Associate Developer', link: 'https://www.credly.com/badges/fd3362bd-743a-4c4d-a68e-b1fdc5d46811/public_url' },
-  { issuer: 'GitHub', name: 'GitHub Foundations', link: 'https://drive.google.com/file/d/1o0fkCAMRWTg1oMwxlqu6t6wnOpBv66Vq/view?usp=sharing' },
-  { issuer: 'Pearson', name: 'IT Specialist – HTML and CSS', link: 'https://www.credly.com/badges/e4a55298-e396-41d8-a032-283aafe9fab7/public_url' },
-  { issuer: 'Oracle', name: 'Java Certified Foundations Associate', link: 'https://drive.google.com/file/d/1g-yyceHtLg_k2RWiOIJqH0MMcGlaH90P/view?usp=sharing' },
-  { issuer: 'Oracle', name: 'Oracle Certified Foundations Associate – Database', link: 'https://drive.google.com/file/d/10-DzabbcH2vHrI6bAohoT8czKRZMa2kV/view?usp=drive_link' },
-  { issuer: 'Cisco', name: 'HTML Essentials', link: 'https://www.credly.com/badges/eb27ca95-3b2a-4948-bef9-0385d1d49055/public_url' },
-  { issuer: 'Cisco', name: 'CSS Essentials', link: 'https://www.credly.com/badges/3b37497f-6a61-4889-af3c-ed337a460a0b/public_url' },
-  { issuer: 'Cisco', name: 'JavaScript Essentials 1', link: 'https://www.credly.com/badges/9cdd4d55-6ecc-463f-b254-811ccdd0539c/public_url' },
-  { issuer: 'Cisco', name: 'JavaScript Essentials 2', link: 'https://www.credly.com/badges/0e1b036e-4318-4c8e-b750-2aca77314442/public_url' },
-  { issuer: 'Cisco', name: 'Python Essentials 1', link: 'https://www.credly.com/badges/0e21e3eb-d8ef-4770-95d7-dcbd6f8696b1/public_url' },
-  { issuer: 'Udemy', name: 'Microsoft Azure Hands-On Training (AZ-900, AZ-104, AZ-305)', link: 'https://drive.google.com/file/d/1KrXClhY0nJ3Acxs7DioNf4Q1rpaMvgPT/view?usp=sharing' },
-];
-
+export type Certification = { issuer: string; name: string; link?: string };
 export type Skill = { name: string; mono: string; note?: string };
 export type SkillCategory = { id: string; title: string; subtitle: string; skills: Skill[] };
-
-export const skillCategories: SkillCategory[] = [
-  {
-    id: 'languages',
-    title: 'Languages',
-    subtitle: 'Java is the primary language',
-    skills: [
-      { name: 'Java', mono: 'Jv', note: 'Primary' },
-      { name: 'Python', mono: 'Py' },
-      { name: 'C', mono: 'C' },
-      { name: 'C++', mono: 'C+' },
-    ],
-  },
-  {
-    id: 'frontend',
-    title: 'Frontend',
-    subtitle: 'Interfaces & the web platform',
-    skills: [
-      { name: 'React', mono: 'Re' },
-      { name: 'HTML', mono: 'Ht' },
-      { name: 'CSS', mono: 'Cs' },
-      { name: 'JavaScript', mono: 'Js' },
-    ],
-  },
-  {
-    id: 'backend',
-    title: 'Backend',
-    subtitle: 'Server-side logic',
-    skills: [
-      { name: 'Node.js', mono: 'No' },
-      { name: 'Express.js', mono: 'Ex' },
-    ],
-  },
-  {
-    id: 'infra',
-    title: 'Infra & Tools',
-    subtitle: 'Shipping & architecture',
-    skills: [
-      { name: 'Docker', mono: 'Dk' },
-      { name: 'Docker Compose', mono: 'Dc' },
-      { name: 'REST APIs', mono: 'Ap' },
-      { name: 'Microservices', mono: 'Ms' },
-      { name: 'JWT Auth', mono: 'Jw' },
-      { name: 'Git / GitHub', mono: 'Gt' },
-      { name: 'Postman', mono: 'Pm' },
-    ],
-  },
-  {
-    id: 'databases',
-    title: 'Databases',
-    subtitle: 'Indexing • Normalization',
-    skills: [
-      { name: 'PostgreSQL', mono: 'Pg' },
-      { name: 'MongoDB', mono: 'Mg' },
-      { name: 'MySQL', mono: 'My' },
-    ],
-  },
-  {
-    id: 'fundamentals',
-    title: 'CS Fundamentals',
-    subtitle: 'The foundations',
-    skills: [
-      { name: 'DSA', mono: 'Ds' },
-      { name: 'OS', mono: 'Os' },
-      { name: 'CN', mono: 'Cn' },
-      { name: 'DBMS', mono: 'Db' },
-      { name: 'OOPs', mono: 'Oo' },
-      { name: 'Collections', mono: 'Co' },
-      { name: 'Multithreading', mono: 'Mt' },
-    ],
-  },
-  {
-    id: 'interests',
-    title: 'Interests',
-    subtitle: 'Coming soon to the series',
-    skills: [
-      { name: 'System Design', mono: 'Sd' },
-      { name: 'Cloud Computing (AWS)', mono: 'Aw' },
-      { name: 'Machine Learning', mono: 'Ml' },
-    ],
-  },
-];
-
-/**
- * Factual cross-references shown when a skill card is hovered/tapped:
- * where the skill appears in the projects, certifications or achievements on the resume.
- */
-export const skillEvidence: Record<string, string[]> = {
-  Java: ['Oracle Java Certified Foundations Associate', 'HackerRank 5-star'],
-  Python: ['PolicyGuard AI', 'Cisco Python Essentials 1', 'HackerRank 5-star'],
-  C: ['HackerRank 5-star'],
-  React: ['Payment Gateway System', 'Multi-Tenant SaaS Platform'],
-  HTML: ['Pearson IT Specialist – HTML and CSS', 'Cisco HTML Essentials'],
-  CSS: ['Pearson IT Specialist – HTML and CSS', 'Cisco CSS Essentials'],
-  JavaScript: ['Cisco JavaScript Essentials 1 & 2'],
-  'Node.js': ['Payment Gateway System', 'Multi-Tenant SaaS Platform'],
-  'Express.js': ['Payment Gateway System'],
-  Docker: ['Payment Gateway System'],
-  'Docker Compose': ['Multi-Tenant SaaS Platform'],
-  'REST APIs': ['PolicyGuard AI'],
-  Microservices: ['Payment Gateway System'],
-  'JWT Auth': ['Multi-Tenant SaaS Platform'],
-  'Git / GitHub': ['GitHub Foundations'],
-  PostgreSQL: ['Payment Gateway System', 'Multi-Tenant SaaS Platform'],
-  MongoDB: ['MongoDB Certified Associate Developer'],
-  DBMS: ['NPTEL Database Management System', 'Oracle Database Foundations'],
-  DSA: ['AlgoUniversity Tech Fellow', '850+ problems solved'],
-  'Cloud Computing (AWS)': ['AWS Certified AI Practitioner', 'AWS Academy Cloud Foundations'],
-  'Machine Learning': ['B.Tech AI & ML', 'NPTEL Deep Learning'],
-};
-
 export type Episode = {
   code: string;
   title: string;
@@ -359,7 +36,6 @@ export type Episode = {
   runtime: string;
   palette: Palette;
 };
-
 export type Season = {
   number: number;
   title: string;
@@ -367,203 +43,1216 @@ export type Season = {
   synopsis: string;
   episodes: Episode[];
 };
+export type TopPick = { label: string; title: string; detail: string; palette: Palette };
+export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
 
-const crimson: Palette = { from: '#24060b', via: '#6e0d1d', to: '#09070a', accent: '#ff3d5a' };
-const amber: Palette = { from: '#1c1003', via: '#6b3c06', to: '#0a0806', accent: '#ffb547' };
-const ocean: Palette = { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' };
-const violet: Palette = { from: '#120822', via: '#3d1a6e', to: '#07060c', accent: '#b98bff' };
-const jade: Palette = { from: '#03150f', via: '#0d5a40', to: '#050a08', accent: '#46e3a8' };
+export const profile = {
+  "fullName": "Jaividhyarthi Vivekanand",
+  "displayName": "JV",
+  "firstName": "JV",
+  "seriesTag": "THE SERIES",
+  "originalLabel": "A JV ORIGINAL",
+  "role": "AI & Data Science Student | Python Developer",
+  "tagline": [
+    "AI & Data Science",
+    "Software Development",
+    "Embedded IoT"
+  ],
+  "intro": "I’m JV, a third-year AI & Data Science student at SRM Valliammai Engineering College. I build software, machine learning applications, and embedded prototypes—from teaching analytics to humanitarian coordination.",
+  "location": "Chennai, Tamil Nadu",
+  "email": "jaividhyarthivivekanand@gmail.com",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/jaividhyarthi-vivekanand-61001a331",
+    "github": "https://github.com/Jaividhyarthi"
+  },
+  "resumePdf": "assets/JV_Complete_Resume.pdf",
+  "portrait": {
+    "src": "assets/jv-monogram.svg",
+    "srcSet": "",
+    "alt": "JV monogram"
+  },
+  "interests": [
+    "AI Research",
+    "Entrepreneurship",
+    "Tamil Poetry",
+    "Drawing & Mandala Art"
+  ]
+};
+
+export const education = [
+  {
+    "school": "SRM Valliammai Engineering College",
+    "place": "Chennai",
+    "degree": "B.Tech — Artificial Intelligence and Data Science",
+    "period": "August 2024 – Present",
+    "score": "CGPA 9.2/10"
+  },
+  {
+    "school": "Sindhi High School",
+    "place": "Bangalore",
+    "degree": "Higher Secondary Certificate — Class XII",
+    "period": "",
+    "score": ""
+  },
+  {
+    "school": "Jaya Public School",
+    "place": "",
+    "degree": "Secondary School Leaving Certificate — Class X",
+    "period": "",
+    "score": ""
+  }
+];
+
+export const experience = [
+  {
+    "company": "iStudio",
+    "role": "Data Analytics Intern",
+    "place": "",
+    "period": "March – April 2026",
+    "points": [
+      "Analyzed datasets with Python and Pandas to identify patterns.",
+      "Created Matplotlib visualizations and delivered a project report."
+    ]
+  },
+  {
+    "company": "Codtec Solutions",
+    "role": "Data Analyst Intern",
+    "place": "",
+    "period": "May 2025",
+    "points": [
+      "Built Python data-analysis and visualization deliverables."
+    ]
+  },
+  {
+    "company": "Elevate Labs",
+    "role": "Web Development Intern",
+    "place": "",
+    "period": "May 2025",
+    "points": [
+      "Developed and deployed frontend features for web applications.",
+      "Recognised among the Top 10 of 800 interns."
+    ]
+  }
+];
+
+export const projects: Project[] = [
+  {
+    "id": "skyglow",
+    "title": "Skyglow",
+    "year": "",
+    "genre": "Repository Intelligence Platform",
+    "logline": "Developed and deployed a full-stack platform analyzing live GitHub repository data to produce explainable indicators and report history.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "REST APIs",
+      "SQLite",
+      "Render"
+    ],
+    "build": [
+      "Developed and deployed a full-stack platform analyzing live GitHub repository data to produce explainable indicators and report history. Validated backend functionality with 9 passing automated tests. Live application: skyglow-intelligence.onrender.com."
+    ],
+    "features": [
+      "Repository Intelligence Platform",
+      "Personal Project"
+    ],
+    "metrics": [
+      {
+        "value": "9",
+        "label": "passing backend tests"
+      }
+    ],
+    "palette": {
+      "from": "#24060b",
+      "via": "#6e0d1d",
+      "to": "#09070a",
+      "accent": "#ff3d5a"
+    },
+    "motif": "shield",
+    "github": "https://github.com/Jaividhyarthi/skyglow"
+  },
+  {
+    "id": "sift",
+    "title": "SIFT",
+    "year": "",
+    "genre": "Security Intelligence Filtering and Triage",
+    "logline": "Contributed to vulnerability triage matching advisories to an organisation’s technology, exposure, and service importance.",
+    "stack": [
+      "NVD",
+      "CISA KEV",
+      "FIRST EPSS",
+      "CVE Data",
+      "Explainable Ranking"
+    ],
+    "build": [
+      "Contributed to vulnerability triage matching advisories to an organisation’s technology, exposure, and service importance. Produces five prioritised actions with transparent scores, uncertain-version verification flags, and exclusion reasons."
+    ],
+    "features": [
+      "Security Intelligence Filtering and Triage",
+      "Team NULLSPACE"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#04121f",
+      "via": "#0f4c6e",
+      "to": "#05080d",
+      "accent": "#4cc9ff"
+    },
+    "motif": "flow"
+  },
+  {
+    "id": "double-sift",
+    "title": "Double SIFT",
+    "year": "",
+    "genre": "Structural Integrity and Flow Tracking",
+    "logline": "Contributed to a structural defence prototype against indirect prompt injection.",
+    "stack": [
+      "AI Agents",
+      "Instruction Provenance",
+      "Source Attribution",
+      "Plan-Drift Detection"
+    ],
+    "build": [
+      "Contributed to a structural defence prototype against indirect prompt injection. Demonstrated an AI email-agent firewall that tracks instruction sources and goal deviations, with trust-based allow, confirm, and block decisions and concise explanations."
+    ],
+    "features": [
+      "Structural Integrity and Flow Tracking",
+      "Team NULLSPACE"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#120822",
+      "via": "#3d1a6e",
+      "to": "#07060c",
+      "accent": "#b98bff"
+    },
+    "motif": "tenants"
+  },
+  {
+    "id": "classlens-tara",
+    "title": "ClassLens / TARA",
+    "year": "",
+    "genre": "Teaching Analytics for Reflective Advancement",
+    "logline": "Developed a multimodal classroom-recording prototype combining transcription, voice activity detection, speaker diarization, prosody analysis, and pose tracking.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "Sarvam ASR",
+      "MediaPipe PoseLandmarker"
+    ],
+    "build": [
+      "Developed a multimodal classroom-recording prototype combining transcription, voice activity detection, speaker diarization, prosody analysis, and pose tracking. Integrated time-based teaching metrics and session reports for evidence-based feedback and academic demonstrations."
+    ],
+    "features": [
+      "Teaching Analytics for Reflective Advancement",
+      "SRM Valliammai Engineering College"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#03150f",
+      "via": "#0d5a40",
+      "to": "#050a08",
+      "accent": "#46e3a8"
+    },
+    "motif": "shield"
+  },
+  {
+    "id": "vivian",
+    "title": "Vivian",
+    "year": "",
+    "genre": "Digital Personal Assistant",
+    "logline": "Building personal and professional workspaces for tasks, notes, messages, events, settings, and approvals.",
+    "stack": [
+      "React",
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "REST APIs"
+    ],
+    "build": [
+      "Building personal and professional workspaces for tasks, notes, messages, events, settings, and approvals. Implemented a database-backed dashboard and assistant APIs, AI chat integration, and database backup support."
+    ],
+    "features": [
+      "Digital Personal Assistant",
+      "Personal Project"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#1c1003",
+      "via": "#6b3c06",
+      "to": "#0a0806",
+      "accent": "#ffb547"
+    },
+    "motif": "flow"
+  },
+  {
+    "id": "sahara",
+    "title": "SAHARA",
+    "year": "",
+    "genre": "Smart Assistant for Humanitarian Aid, Rescue and Action",
+    "logline": "Developing humanitarian coordination through help requests, real-time messaging, and in-app calls.",
+    "stack": [
+      "React",
+      "Vite",
+      "FastAPI",
+      "Neon PostgreSQL",
+      "Nexconn Chat and Calling SDKs"
+    ],
+    "build": [
+      "Developing humanitarian coordination through help requests, real-time messaging, and in-app calls. Established services and database tables for users, requests, messages, and events. In-app calling works; background incoming-call notifications remain under refinement."
+    ],
+    "features": [
+      "Smart Assistant for Humanitarian Aid, Rescue and Action",
+      "Nexconn Build Challenge"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#24060b",
+      "via": "#6e0d1d",
+      "to": "#09070a",
+      "accent": "#ff3d5a"
+    },
+    "motif": "tenants"
+  },
+  {
+    "id": "ghostping",
+    "title": "GhostPing",
+    "year": "",
+    "genre": "Predictive Lag and Thermal Monitoring",
+    "logline": "Designed an on-device monitoring prototype using short telemetry windows and time-series modeling to anticipate network lag and thermal spikes, identifying emerging gaming-performance risks..",
+    "stack": [
+      "Python",
+      "GRU",
+      "TensorFlow Lite",
+      "Device Telemetry"
+    ],
+    "build": [
+      "Designed an on-device monitoring prototype using short telemetry windows and time-series modeling to anticipate network lag and thermal spikes, identifying emerging gaming-performance risks."
+    ],
+    "features": [
+      "Predictive Lag and Thermal Monitoring",
+      "iQOO Hyderabad City Battle"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#04121f",
+      "via": "#0f4c6e",
+      "to": "#05080d",
+      "accent": "#4cc9ff"
+    },
+    "motif": "shield"
+  },
+  {
+    "id": "gridpulse-ai",
+    "title": "GridPulse AI",
+    "year": "",
+    "genre": "Explainable Multi-Agent Microgrid Orchestration",
+    "logline": "Contributed to a research prototype coordinating renewable forecasting, demand forecasting, fault detection, and battery management.",
+    "stack": [
+      "Multi-Agent Systems",
+      "Forecasting",
+      "Microgrid Simulation"
+    ],
+    "build": [
+      "Contributed to a research prototype coordinating renewable forecasting, demand forecasting, fault detection, and battery management. Developed a simulation-based operator dashboard for inspecting grid decisions and explanations. Validation and comparative evaluation are ongoing."
+    ],
+    "features": [
+      "Explainable Multi-Agent Microgrid Orchestration",
+      "SRM Valliammai Engineering College"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#120822",
+      "via": "#3d1a6e",
+      "to": "#07060c",
+      "accent": "#b98bff"
+    },
+    "motif": "flow"
+  },
+  {
+    "id": "dravidalm",
+    "title": "DravidaLM",
+    "year": "",
+    "genre": "Offline Language Models for South Indian Languages",
+    "logline": "Researching Tamil, Telugu, Kannada, and Malayalam models with dialect coverage, code-mixed text, and offline edge deployment.",
+    "stack": [
+      "Python",
+      "Transformers",
+      "Tokenization",
+      "Corpus Processing",
+      "NVIDIA Jetson AGX"
+    ],
+    "build": [
+      "Researching Tamil, Telugu, Kannada, and Malayalam models with dialect coverage, code-mixed text, and offline edge deployment. Conducted initial experiments using approximately 24 million tokens; further corpus preparation, implementation, and evaluation are ongoing."
+    ],
+    "features": [
+      "Offline Language Models for South Indian Languages",
+      "Team NULLSPACE"
+    ],
+    "metrics": [
+      {
+        "value": "24M",
+        "label": "tokens in initial experiments"
+      }
+    ],
+    "palette": {
+      "from": "#03150f",
+      "via": "#0d5a40",
+      "to": "#050a08",
+      "accent": "#46e3a8"
+    },
+    "motif": "tenants"
+  },
+  {
+    "id": "atrp",
+    "title": "ATRP",
+    "year": "",
+    "genre": "Adaptive Trust Routing Protocol for IoT Networks",
+    "logline": "Investigated adaptive routing using node reliability and dynamic path costs.",
+    "stack": [
+      "IoT Simulation",
+      "Trust-Based Routing",
+      "Graph Algorithms"
+    ],
+    "build": [
+      "Investigated adaptive routing using node reliability and dynamic path costs. Benchmarked against Dijkstra and random-walk strategies and prepared a research manuscript submitted for review."
+    ],
+    "features": [
+      "Adaptive Trust Routing Protocol for IoT Networks",
+      "Academic Research"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#1c1003",
+      "via": "#6b3c06",
+      "to": "#0a0806",
+      "accent": "#ffb547"
+    },
+    "motif": "shield"
+  },
+  {
+    "id": "aquawave",
+    "title": "AQUAWAVE",
+    "year": "",
+    "genre": "Adaptive Sonar Transmitter for AUVs",
+    "logline": "Designed a sonar-transmitter payload for autonomous underwater vehicles, including waveform generation, embedded control, logging, and safety considerations.",
+    "stack": [
+      "STM32F407",
+      "DSP",
+      "LFM Chirps",
+      "Phase-Coded Waveforms",
+      "SD Logging"
+    ],
+    "build": [
+      "Designed a sonar-transmitter payload for autonomous underwater vehicles, including waveform generation, embedded control, logging, and safety considerations. Developed the architecture and waveform approach as a foundation for hardware implementation and validation."
+    ],
+    "features": [
+      "Adaptive Sonar Transmitter for AUVs",
+      "Team NULLSPACE"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#24060b",
+      "via": "#6e0d1d",
+      "to": "#09070a",
+      "accent": "#ff3d5a"
+    },
+    "motif": "flow"
+  },
+  {
+    "id": "motor-pump-predictive-health-and-dry-run-protection",
+    "title": "Motor/Pump Predictive Health and Dry-Run Protection",
+    "year": "",
+    "genre": "Motor/Pump Predictive Health and Dry-Run Protection",
+    "logline": "Built an embedded system analyzing motor current signatures for dry-run conditions and indicators of early wear.",
+    "stack": [
+      "ESP32",
+      "ACS712 Current Sensor",
+      "Python"
+    ],
+    "build": [
+      "Built an embedded system analyzing motor current signatures for dry-run conditions and indicators of early wear. Converted sensor readings into motor-health indicators and integrated automatic protective cut-off in response to detected faults."
+    ],
+    "features": [
+      "Motor/Pump Predictive Health and Dry-Run Protection",
+      "Personal Project"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#04121f",
+      "via": "#0f4c6e",
+      "to": "#05080d",
+      "accent": "#4cc9ff"
+    },
+    "motif": "tenants"
+  },
+  {
+    "id": "phantom",
+    "title": "Phantom",
+    "year": "",
+    "genre": "Autonomous Phantom Load Detection Device",
+    "logline": "Developed embedded hardware that identifies standby electrical loads from live current measurements and isolates connected appliances through relay control, supporting reduced unnecessary electricity consumption..",
+    "stack": [
+      "Microcontroller",
+      "Current Sensing",
+      "Relay Control"
+    ],
+    "build": [
+      "Developed embedded hardware that identifies standby electrical loads from live current measurements and isolates connected appliances through relay control, supporting reduced unnecessary electricity consumption."
+    ],
+    "features": [
+      "Autonomous Phantom Load Detection Device",
+      "SRM Valliammai Engineering College"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#120822",
+      "via": "#3d1a6e",
+      "to": "#07060c",
+      "accent": "#b98bff"
+    },
+    "motif": "shield"
+  },
+  {
+    "id": "q-farm",
+    "title": "Q.Farm",
+    "year": "",
+    "genre": "Intelligent Crop Advisory",
+    "logline": "Developed a crop-advisory prototype combining Random Forest predictions with quantum-inspired scoring.",
+    "stack": [
+      "Python",
+      "Random Forest",
+      "Quantum-Inspired Scoring"
+    ],
+    "build": [
+      "Developed a crop-advisory prototype combining Random Forest predictions with quantum-inspired scoring. Integrated predictive modeling and recommendation scoring to explore data-driven crop selection."
+    ],
+    "features": [
+      "Intelligent Crop Advisory",
+      "Academic / Hackathon Project"
+    ],
+    "metrics": [],
+    "palette": {
+      "from": "#03150f",
+      "via": "#0d5a40",
+      "to": "#050a08",
+      "accent": "#46e3a8"
+    },
+    "motif": "flow"
+  }
+];
+
+export const achievements: Achievement[] = [
+  {
+    "id": "moment-0",
+    "title": "1st Prize",
+    "org": "Neurobots National Hackathon 2026",
+    "detail": "Winning team in Thrissur; team prize valued at ₹1,00,000.",
+    "laurel": "National Winner"
+  },
+  {
+    "id": "moment-1",
+    "title": "1st Prize",
+    "org": "Erode Sengunthar Engineering College Hackathon 2026",
+    "detail": "First-place team finish.",
+    "laurel": "Hackathon Winner"
+  },
+  {
+    "id": "moment-2",
+    "title": "2nd Prize",
+    "org": "NEXORA National Hackathon 2026",
+    "detail": "Cybersecurity Track, Coimbatore.",
+    "laurel": "Runner-Up"
+  },
+  {
+    "id": "moment-3",
+    "title": "Internal Qualifier",
+    "org": "Smart India Hackathon 2026",
+    "detail": "Selected through the college internal round with Team NULLSPACE and AQUAWAVE.",
+    "laurel": "SIH Selection"
+  },
+  {
+    "id": "moment-4",
+    "title": "1st Runner-Up",
+    "org": "IT Buzzfeed 2024",
+    "detail": "Competed individually against 47 teams.",
+    "laurel": "Solo Competition"
+  },
+  {
+    "id": "moment-5",
+    "title": "Top 10 / 800",
+    "org": "Elevate Labs",
+    "detail": "Recognised during the Web Development internship.",
+    "laurel": "Internship Recognition"
+  },
+  {
+    "id": "moment-6",
+    "title": "Honourable Delegate",
+    "org": "Model United Nations 2025",
+    "detail": "Represented Norway in UNEA on 8–9 April 2025.",
+    "laurel": "Diplomacy"
+  },
+  {
+    "id": "moment-7",
+    "title": "A-QAOA",
+    "org": "Springer Nature",
+    "detail": "Co-authored a published research paper.",
+    "laurel": "Publication"
+  },
+  {
+    "id": "moment-8",
+    "title": "Cognitive Mirror AI",
+    "org": "IEEE NCRTCI 2026",
+    "detail": "Co-authored a published research paper.",
+    "laurel": "Publication"
+  }
+];
+
+export const certifications: Certification[] = [
+  {
+    "name": "Advanced Python Programming",
+    "issuer": "Coursera / upSKILL"
+  },
+  {
+    "name": "Java Programming for Beginners",
+    "issuer": "Coursera / upSKILL"
+  },
+  {
+    "name": "Web Development - Value Added Course",
+    "issuer": "SRM Valliammai Engineering College"
+  },
+  {
+    "name": "MERN Stack Development - Value Added Course",
+    "issuer": "SRM Valliammai Engineering College"
+  },
+  {
+    "name": "Introduction to Cloud Computing",
+    "issuer": "SkillUp"
+  },
+  {
+    "name": "Introduction to Generative AI: Art of the Possible",
+    "issuer": "Amazon Web Services (AWS) | 2025"
+  },
+  {
+    "name": "Generative AI Engineering: Foundations, RAG & Deployment",
+    "issuer": "HCL GUVI"
+  },
+  {
+    "name": "The AI Skills You Need to Stay Relevant in the Next 2 Years",
+    "issuer": "WsCube Tech"
+  },
+  {
+    "name": "Artificial Intelligence and Machine Learning Training",
+    "issuer": "Skill Ladders × Kshitij 2026, IIT Kharagpur"
+  },
+  {
+    "name": "Financial Technology Job Simulation",
+    "issuer": "JPMorgan Chase & Co. - Forage"
+  },
+  {
+    "name": "GenAI Powered Data Analytics Job Simulation",
+    "issuer": "Tata - Forage | 2026"
+  }
+];
+
+export const skillCategories: SkillCategory[] = [
+  {
+    "id": "languages",
+    "title": "Languages",
+    "subtitle": "Code behind the projects",
+    "skills": [
+      {
+        "name": "Python",
+        "mono": "Py"
+      },
+      {
+        "name": "SQL",
+        "mono": "SQ"
+      },
+      {
+        "name": "JavaScript",
+        "mono": "Ja"
+      }
+    ]
+  },
+  {
+    "id": "web",
+    "title": "Web & Backend",
+    "subtitle": "Interfaces, APIs and data",
+    "skills": [
+      {
+        "name": "React",
+        "mono": "Re"
+      },
+      {
+        "name": "FastAPI",
+        "mono": "Fa"
+      },
+      {
+        "name": "REST APIs",
+        "mono": "RE"
+      },
+      {
+        "name": "PostgreSQL",
+        "mono": "Po"
+      },
+      {
+        "name": "SQLite",
+        "mono": "SQ"
+      }
+    ]
+  },
+  {
+    "id": "ai",
+    "title": "AI & Data",
+    "subtitle": "Models and analysis",
+    "skills": [
+      {
+        "name": "Machine Learning",
+        "mono": "Ma"
+      },
+      {
+        "name": "Time-Series Modeling",
+        "mono": "Ti"
+      },
+      {
+        "name": "Pandas",
+        "mono": "Pa"
+      },
+      {
+        "name": "NumPy",
+        "mono": "Nu"
+      },
+      {
+        "name": "Speech Processing",
+        "mono": "Sp"
+      },
+      {
+        "name": "Computer Vision",
+        "mono": "Co"
+      }
+    ]
+  },
+  {
+    "id": "embedded",
+    "title": "Embedded & IoT",
+    "subtitle": "From signals to actions",
+    "skills": [
+      {
+        "name": "ESP32",
+        "mono": "ES"
+      },
+      {
+        "name": "STM32",
+        "mono": "ST"
+      },
+      {
+        "name": "Sensor Interfacing",
+        "mono": "Se"
+      },
+      {
+        "name": "Digital Signal Processing",
+        "mono": "Di"
+      }
+    ]
+  },
+  {
+    "id": "tools",
+    "title": "Tools",
+    "subtitle": "Build, track and deploy",
+    "skills": [
+      {
+        "name": "Git / GitHub",
+        "mono": "Gi"
+      },
+      {
+        "name": "Render",
+        "mono": "Re"
+      },
+      {
+        "name": "Vite",
+        "mono": "Vi"
+      },
+      {
+        "name": "Docker",
+        "mono": "Do"
+      }
+    ]
+  }
+];
+
+export const skillEvidence: Record<string, string[]> = {
+  "Python": [
+    "Skyglow",
+    "Q.Farm",
+    "GhostPing"
+  ],
+  "FastAPI": [
+    "Skyglow",
+    "ClassLens / TARA",
+    "Vivian",
+    "SAHARA"
+  ],
+  "React": [
+    "Vivian",
+    "SAHARA"
+  ],
+  "PostgreSQL": [
+    "SAHARA"
+  ],
+  "SQLite": [
+    "Skyglow",
+    "Vivian"
+  ],
+  "ESP32": [
+    "Motor/Pump Predictive Health"
+  ],
+  "STM32": [
+    "AQUAWAVE"
+  ],
+  "Time-Series Modeling": [
+    "GhostPing"
+  ],
+  "Speech Processing": [
+    "ClassLens / TARA"
+  ],
+  "Computer Vision": [
+    "ClassLens / TARA"
+  ]
+};
 
 export const seasons: Season[] = [
   {
-    number: 1,
-    title: 'The Beginning',
-    period: '2021 – 2023',
-    synopsis: 'Intermediate years at Sri Chaitanya Junior College, Kakinada — Mathematics, Physics and Chemistry.',
-    episodes: [
+    "number": 1,
+    "title": "The Foundation",
+    "period": "2024 – Present",
+    "synopsis": "Engineering, curiosity, and learning to build.",
+    "episodes": [
       {
-        code: 'S01 E01',
-        title: 'The Foundation',
-        description: 'BIEAP, MPC at Sri Chaitanya Junior College, Kakinada — finishing with a score of 925/1000.',
-        tags: ['MPC', 'BIEAP'],
-        runtime: 'Jun 2021 – May 2023',
-        palette: amber,
+        "code": "S01 E01",
+        "title": "The AI & Data Science Student",
+        "description": "B.Tech at SRM Valliammai Engineering College; expected graduation in May 2028.",
+        "tags": [
+          "CGPA 9.2/10"
+        ],
+        "runtime": "2024 – Present",
+        "palette": {
+          "from": "#24060b",
+          "via": "#6e0d1d",
+          "to": "#09070a",
+          "accent": "#ff3d5a"
+        }
       },
-    ],
+      {
+        "code": "S01 E02",
+        "title": "The Representative",
+        "description": "Serving as class representative and taking the stage as a college event compère.",
+        "tags": [
+          "Leadership"
+        ],
+        "runtime": "2024 – Present",
+        "palette": {
+          "from": "#04121f",
+          "via": "#0f4c6e",
+          "to": "#05080d",
+          "accent": "#4cc9ff"
+        }
+      }
+    ]
   },
   {
-    number: 2,
-    title: 'Enter: AI & ML',
-    period: '2023 – Present',
-    synopsis: 'B.Tech in Artificial Intelligence and Machine Learning at Aditya Engineering College, Surampalem.',
-    episodes: [
+    "number": 2,
+    "title": "Learning by Doing",
+    "period": "2025 – 2026",
+    "synopsis": "Three internships connecting coursework to practical work.",
+    "episodes": [
       {
-        code: 'S02 E01',
-        title: 'The Engineer',
-        description: 'Bachelor of Technology in Artificial Intelligence and Machine Learning — CGPA 9.10.',
-        tags: ['B.Tech', 'AI & ML', 'CGPA 9.10'],
-        runtime: 'Oct 2023 – Present',
-        palette: violet,
+        "code": "S02 E01",
+        "title": "iStudio",
+        "description": "Analyzed datasets with Python and Pandas to identify patterns. Created Matplotlib visualizations and delivered a project report.",
+        "tags": [
+          "March – April 2026"
+        ],
+        "runtime": "2025 – 2026",
+        "palette": {
+          "from": "#04121f",
+          "via": "#0f4c6e",
+          "to": "#05080d",
+          "accent": "#4cc9ff"
+        }
       },
       {
-        code: 'S02 E02',
-        title: 'The Topper',
-        description: 'AIML Branch Topper with a 9.24 SGPA for the semester.',
-        tags: ['9.24 SGPA', 'Branch Topper'],
-        runtime: 'One semester',
-        palette: crimson,
+        "code": "S02 E02",
+        "title": "Codtec Solutions",
+        "description": "Built Python data-analysis and visualization deliverables.",
+        "tags": [
+          "May 2025"
+        ],
+        "runtime": "2025 – 2026",
+        "palette": {
+          "from": "#120822",
+          "via": "#3d1a6e",
+          "to": "#07060c",
+          "accent": "#b98bff"
+        }
       },
       {
-        code: 'S02 E03',
-        title: 'The Problem Solver',
-        description: 'LeetCode 350+ (peak 1442), GFG 300+ (1436), CodeChef 200+ and HackerRank 5-star badges in C, Python, Java and SQL.',
-        tags: ['DSA', 'LeetCode', 'GFG', 'CodeChef', 'HackerRank'],
-        runtime: '850+ problems',
-        palette: jade,
-      },
-    ],
+        "code": "S02 E03",
+        "title": "Elevate Labs",
+        "description": "Developed and deployed frontend features for web applications. Recognised among the Top 10 of 800 interns.",
+        "tags": [
+          "May 2025"
+        ],
+        "runtime": "2025 – 2026",
+        "palette": {
+          "from": "#03150f",
+          "via": "#0d5a40",
+          "to": "#050a08",
+          "accent": "#46e3a8"
+        }
+      }
+    ]
   },
   {
-    number: 3,
-    title: 'Learning to Build',
-    period: '2025 – 2026',
-    synopsis: 'One year of intensive Full-Stack Development training as a Trainee at Technical Hub Pvt Ltd.',
-    episodes: [
+    "number": 3,
+    "title": "The Hackathon Circuit",
+    "period": "2026",
+    "synopsis": "Building with Team NULLSPACE under real deadlines.",
+    "episodes": [
       {
-        code: 'S03 E01',
-        title: 'The Trainee',
-        description: 'Intensive Full-Stack Development training covering frontend, backend, database integration and deployment workflows.',
-        tags: ['FSD', 'Frontend', 'Backend', 'Databases'],
-        runtime: 'May 2025 – Jun 2026',
-        palette: ocean,
+        "code": "S03 E01",
+        "title": "Neurobots National Hackathon 2026",
+        "description": "Winning team in Thrissur; team prize valued at ₹1,00,000.",
+        "tags": [
+          "1st Prize"
+        ],
+        "runtime": "2026",
+        "palette": {
+          "from": "#120822",
+          "via": "#3d1a6e",
+          "to": "#07060c",
+          "accent": "#b98bff"
+        }
       },
       {
-        code: 'S03 E02',
-        title: 'The Developer',
-        description: 'Developed responsive web applications — user interfaces, server-side logic and database connectivity.',
-        tags: ['React', 'Node.js', 'Express.js'],
-        runtime: 'Technical Hub',
-        palette: violet,
+        "code": "S03 E02",
+        "title": "Erode Sengunthar Engineering College Hackathon 2026",
+        "description": "First-place team finish.",
+        "tags": [
+          "1st Prize"
+        ],
+        "runtime": "2026",
+        "palette": {
+          "from": "#03150f",
+          "via": "#0d5a40",
+          "to": "#050a08",
+          "accent": "#46e3a8"
+        }
       },
       {
-        code: 'S03 E03',
-        title: 'The Deployer',
-        description: 'Deployed and managed web applications with version control, debugging and end-to-end development practices.',
-        tags: ['Git / GitHub', 'Deployment'],
-        runtime: 'Technical Hub',
-        palette: jade,
+        "code": "S03 E03",
+        "title": "NEXORA National Hackathon 2026",
+        "description": "Cybersecurity Track, Coimbatore.",
+        "tags": [
+          "2nd Prize"
+        ],
+        "runtime": "2026",
+        "palette": {
+          "from": "#1c1003",
+          "via": "#6b3c06",
+          "to": "#0a0806",
+          "accent": "#ffb547"
+        }
       },
-    ],
+      {
+        "code": "S03 E04",
+        "title": "Smart India Hackathon 2026",
+        "description": "Selected through the college internal round with Team NULLSPACE and AQUAWAVE.",
+        "tags": [
+          "Internal Qualifier"
+        ],
+        "runtime": "2026",
+        "palette": {
+          "from": "#24060b",
+          "via": "#6e0d1d",
+          "to": "#09070a",
+          "accent": "#ff3d5a"
+        }
+      }
+    ]
   },
   {
-    number: 4,
-    title: 'Building Real Products',
-    period: '2026',
-    synopsis: 'Three Originals — an AI platform, a payment gateway and a multi-tenant SaaS — plus national-level recognition.',
-    episodes: [
+    "number": 4,
+    "title": "Research Meets Software",
+    "period": "In progress",
+    "synopsis": "Projects across AI systems, language models, and embedded computing.",
+    "episodes": [
       {
-        code: 'S04 E01',
-        title: 'The AI Builder',
-        description: 'PolicyGuard AI — LLM-based Q&A and key-information extraction across 500+ policy documents at 92% accuracy.',
-        tags: ['Python', 'NLP', 'LLM'],
-        runtime: '2026',
-        palette: crimson,
+        "code": "S04 E01",
+        "title": "Teaching Analytics",
+        "description": "ClassLens / TARA combines speech and visual signals for teaching-delivery feedback.",
+        "tags": [
+          "Applied AI"
+        ],
+        "runtime": "In progress",
+        "palette": {
+          "from": "#03150f",
+          "via": "#0d5a40",
+          "to": "#050a08",
+          "accent": "#46e3a8"
+        }
       },
       {
-        code: 'S04 E02',
-        title: 'The Architect',
-        description: 'Payment Gateway System and Multi-Tenant SaaS Platform — state machines, microservices, tenant isolation and RBAC.',
-        tags: ['Node.js', 'PostgreSQL', 'Docker'],
-        runtime: '2026',
-        palette: amber,
+        "code": "S04 E02",
+        "title": "Regional Language AI",
+        "description": "DravidaLM explores Tamil, Telugu, Kannada, and Malayalam language models.",
+        "tags": [
+          "Research"
+        ],
+        "runtime": "In progress",
+        "palette": {
+          "from": "#1c1003",
+          "via": "#6b3c06",
+          "to": "#0a0806",
+          "accent": "#ffb547"
+        }
       },
       {
-        code: 'S04 E03',
-        title: 'The Fellow',
-        description: 'Selected as a Tech Fellow at AlgoUniversity and reached the Semi-Finals of Flipkart GRiD 7.0.',
-        tags: ['AlgoUniversity', 'Flipkart GRiD 7.0'],
-        runtime: 'National stage',
-        palette: ocean,
-      },
-    ],
+        "code": "S04 E03",
+        "title": "Published Work",
+        "description": "Co-authored A-QAOA and Cognitive Mirror AI.",
+        "tags": [
+          "Publications"
+        ],
+        "runtime": "In progress",
+        "palette": {
+          "from": "#24060b",
+          "via": "#6e0d1d",
+          "to": "#09070a",
+          "accent": "#ff3d5a"
+        }
+      }
+    ]
   },
   {
-    number: 5,
-    title: "What's Next",
-    period: 'Now streaming',
-    synopsis: 'The interests on the resume point to the next arc of the story.',
-    episodes: [
+    "number": 5,
+    "title": "The Next Chapter",
+    "period": "Now building",
+    "synopsis": "AI research, useful products, and entrepreneurship.",
+    "episodes": [
       {
-        code: 'S05 E01',
-        title: 'The Next Chapter',
-        description: 'Exploring System Design, Cloud Computing (AWS) and Machine Learning.',
-        tags: ['System Design', 'AWS', 'Machine Learning'],
-        runtime: 'In production',
-        palette: violet,
+        "code": "S05 E01",
+        "title": "Humanitarian Coordination",
+        "description": "SAHARA connects help requests with chat and in-app calling.",
+        "tags": [
+          "In development"
+        ],
+        "runtime": "Now building",
+        "palette": {
+          "from": "#1c1003",
+          "via": "#6b3c06",
+          "to": "#0a0806",
+          "accent": "#ffb547"
+        }
       },
-    ],
-  },
+      {
+        "code": "S05 E02",
+        "title": "The Personal Assistant",
+        "description": "Vivian combines personal and professional workspaces with AI chat.",
+        "tags": [
+          "In development"
+        ],
+        "runtime": "Now building",
+        "palette": {
+          "from": "#24060b",
+          "via": "#6e0d1d",
+          "to": "#09070a",
+          "accent": "#ff3d5a"
+        }
+      }
+    ]
+  }
 ];
-
-export type TopPick = { label: string; title: string; detail: string; palette: Palette };
 
 export const topPicks: TopPick[] = [
-  { label: 'Primary language', title: 'Java', detail: 'Listed as primary on the resume • Oracle certified', palette: amber },
-  { label: 'The AI Original', title: 'PolicyGuard AI', detail: '500+ documents • 92% accuracy', palette: crimson },
-  { label: 'Biggest stage', title: 'Flipkart GRiD 7.0', detail: 'Semi-Finalist', palette: ocean },
-  { label: 'National selection', title: 'AlgoUniversity', detail: 'Tech Fellow', palette: violet },
-  { label: 'Academic high', title: 'Branch Topper', detail: '9.24 SGPA in AI & ML', palette: jade },
-  { label: 'Cloud credential', title: 'AWS AI Practitioner', detail: 'AWS Certified', palette: amber },
-  { label: 'Problems solved', title: '850+', detail: 'LeetCode 350+ • GFG 300+ • CodeChef 200+', palette: crimson },
-  { label: 'The training arc', title: '1 Year of FSD', detail: 'Technical Hub Pvt Ltd', palette: ocean },
-  { label: 'Database credential', title: 'MongoDB', detail: 'Certified Associate Developer', palette: jade },
-  { label: 'Current focus', title: 'System Design', detail: 'with Cloud (AWS) & Machine Learning', palette: violet },
+  {
+    "label": "Primary language",
+    "title": "Python",
+    "detail": "APIs, data analysis and machine learning",
+    "palette": {
+      "from": "#24060b",
+      "via": "#6e0d1d",
+      "to": "#09070a",
+      "accent": "#ff3d5a"
+    }
+  },
+  {
+    "label": "Live project",
+    "title": "Skyglow",
+    "detail": "Repository intelligence · 9 passing tests",
+    "palette": {
+      "from": "#04121f",
+      "via": "#0f4c6e",
+      "to": "#05080d",
+      "accent": "#4cc9ff"
+    }
+  },
+  {
+    "label": "Teaching analytics",
+    "title": "ClassLens / TARA",
+    "detail": "Speech and pose analysis",
+    "palette": {
+      "from": "#120822",
+      "via": "#3d1a6e",
+      "to": "#07060c",
+      "accent": "#b98bff"
+    }
+  },
+  {
+    "label": "National stage",
+    "title": "Two first prizes",
+    "detail": "Neurobots and Erode hackathons",
+    "palette": {
+      "from": "#03150f",
+      "via": "#0d5a40",
+      "to": "#050a08",
+      "accent": "#46e3a8"
+    }
+  },
+  {
+    "label": "Academic journey",
+    "title": "9.2/10",
+    "detail": "B.Tech AI & Data Science",
+    "palette": {
+      "from": "#1c1003",
+      "via": "#6b3c06",
+      "to": "#0a0806",
+      "accent": "#ffb547"
+    }
+  },
+  {
+    "label": "AI security",
+    "title": "Double SIFT",
+    "detail": "Instruction provenance and plan drift",
+    "palette": {
+      "from": "#24060b",
+      "via": "#6e0d1d",
+      "to": "#09070a",
+      "accent": "#ff3d5a"
+    }
+  },
+  {
+    "label": "Hands-on experience",
+    "title": "3 internships",
+    "detail": "Analytics and web development",
+    "palette": {
+      "from": "#04121f",
+      "via": "#0f4c6e",
+      "to": "#05080d",
+      "accent": "#4cc9ff"
+    }
+  },
+  {
+    "label": "Research",
+    "title": "Published papers",
+    "detail": "A-QAOA and Cognitive Mirror AI",
+    "palette": {
+      "from": "#120822",
+      "via": "#3d1a6e",
+      "to": "#07060c",
+      "accent": "#b98bff"
+    }
+  },
+  {
+    "label": "Regional language AI",
+    "title": "DravidaLM",
+    "detail": "24M-token initial experiments",
+    "palette": {
+      "from": "#03150f",
+      "via": "#0d5a40",
+      "to": "#050a08",
+      "accent": "#46e3a8"
+    }
+  },
+  {
+    "label": "Current build",
+    "title": "SAHARA",
+    "detail": "Humanitarian coordination",
+    "palette": {
+      "from": "#1c1003",
+      "via": "#6b3c06",
+      "to": "#0a0806",
+      "accent": "#ffb547"
+    }
+  }
 ];
-
-/** Slides for the "▶ Play Intro" cinematic sequence. */
-export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
 
 export const introSlides: IntroSlide[] = [
   {
-    kicker: 'Education',
-    title: 'B.Tech · AI & ML',
-    lines: ['Aditya Engineering College, Surampalem', 'October 2023 – Present'],
-    chips: ['CGPA 9.10'],
+    "kicker": "Starring",
+    "title": "JV",
+    "lines": [
+      "AI & Data Science student. Python developer.",
+      "SRM Valliammai Engineering College · Chennai"
+    ],
+    "chips": [
+      "CGPA 9.2/10"
+    ]
   },
   {
-    kicker: 'Skills',
-    title: 'Java first.',
-    lines: ['Python, C, C++ · React, Node.js, Express.js', 'PostgreSQL, MongoDB, MySQL · Docker, REST, JWT'],
-    chips: ['Java', 'Python', 'React', 'Node.js', 'Docker', 'PostgreSQL'],
+    "kicker": "Experience",
+    "title": "Learning by doing",
+    "lines": [
+      "iStudio · Codtec Solutions · Elevate Labs",
+      "Data analytics and web development"
+    ]
   },
   {
-    kicker: 'Training',
-    title: 'The Training Arc',
-    lines: ['One year of intensive Full‑Stack Development training', 'Trainee · Technical Hub Pvt Ltd · May 2025 – June 2026', 'Frontend · Backend · Databases · Deployment'],
+    "kicker": "Originals",
+    "title": "14 projects",
+    "lines": [
+      "ClassLens / TARA · Skyglow · Double SIFT",
+      "Vivian · SAHARA · Embedded IoT"
+    ]
   },
   {
-    kicker: 'Projects',
-    title: 'Three Originals',
-    lines: ['PolicyGuard AI — 500+ documents, 92% accuracy', 'Payment Gateway — 1,000+ transactions, 99.8% uptime', 'Multi-Tenant SaaS — 50+ tenants, zero unauthorized access'],
+    "kicker": "Top moments",
+    "title": "Built to compete",
+    "lines": [
+      "Two first-place hackathon finishes",
+      "NEXORA Cybersecurity Track runner-up",
+      "SIH internal selection with AQUAWAVE"
+    ]
   },
   {
-    kicker: 'Achievements',
-    title: 'Top Moments',
-    lines: ['Tech Fellow — AlgoUniversity', 'Semi-Finalist — Flipkart GRiD 7.0', 'AIML Branch Topper — 9.24 SGPA'],
+    "kicker": "Research",
+    "title": "Ideas into evidence",
+    "lines": [
+      "A-QAOA · Springer Nature",
+      "Cognitive Mirror AI · IEEE NCRTCI 2026",
+      "ATRP · submitted for review"
+    ]
   },
   {
-    kicker: 'Certified',
-    title: '16 Certifications',
-    lines: ['AWS · MongoDB · Oracle · GitHub · Pearson', 'NPTEL · Cisco · Udemy'],
-  },
-  {
-    kicker: 'Current mission',
-    title: 'Now exploring',
-    lines: ['System Design · Cloud Computing (AWS) · Machine Learning'],
-  },
+    "kicker": "Next chapter",
+    "title": "Let’s build",
+    "lines": [
+      "AI research · Software development · Entrepreneurship"
+    ]
+  }
 ];
 
-export type ProfileId = 'sushmita' | 'recruiter' | 'developer' | 'creative';
+const crimson: Palette = {"from": "#24060b", "via": "#6e0d1d", "to": "#09070a", "accent": "#ff3d5a"};
+
+const ocean: Palette = {"from": "#04121f", "via": "#0f4c6e", "to": "#05080d", "accent": "#4cc9ff"};
+
+const violet: Palette = {"from": "#120822", "via": "#3d1a6e", "to": "#07060c", "accent": "#b98bff"};
+
+const jade: Palette = {"from": "#03150f", "via": "#0d5a40", "to": "#050a08", "accent": "#46e3a8"};
+
+const amber: Palette = {"from": "#1c1003", "via": "#6b3c06", "to": "#0a0806", "accent": "#ffb547"};
+
+export type ProfileId = 'jv' | 'recruiter' | 'developer' | 'creative';
 export type SectionId = 'about' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'story';
 
 export const viewerProfiles: {
@@ -574,8 +1263,8 @@ export const viewerProfiles: {
   order: SectionId[];
 }[] = [
   {
-    id: 'sushmita',
-    name: 'Sushmita',
+    id: 'jv',
+    name: 'JV',
     blurb: 'The full series, in order',
     color: '#e5132b',
     order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'story'],
@@ -606,9 +1295,11 @@ export const viewerProfiles: {
 export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: string; palette: Palette }> = {
   about: { nav: 'About', card: 'About Me', meta: 'The Pilot • Education & training', palette: violet },
   journey: { nav: 'Journey', card: 'My Journey', meta: `${seasons.length} Seasons • ${seasons.reduce((n, s) => n + s.episodes.length, 0)} Episodes`, palette: amber },
-  originals: { nav: 'Originals', card: 'My Projects', meta: `${projects.length} Originals • 2026`, palette: crimson },
+  originals: { nav: 'Originals', card: 'My Projects', meta: `${projects.length} Originals`, palette: crimson },
   picks: { nav: 'Top Picks', card: 'Top Picks', meta: 'Top 10 from the resume', palette: jade },
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Categories`, palette: ocean },
   moments: { nav: 'Moments', card: 'My Achievements', meta: `${achievements.length} Moments • ${certifications.length} Certifications`, palette: crimson },
   story: { nav: 'Resume', card: 'The Full Story', meta: 'Resume • View & download', palette: violet },
 };
+
+
