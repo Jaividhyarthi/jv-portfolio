@@ -132,7 +132,7 @@ function Series() {
       <AtmosphereAudio />
 
       <AnimatePresence>
-        {stage === 'opening' && <OpeningSequence key="opening" onDone={() => setStage('profiles')} />}
+        {stage === 'opening' && <OpeningSequence key="opening" onDone={() => { window.dispatchEvent(new Event('jv-start-sound')); setStage('profiles'); }} />}
         {stage === 'profiles' && <ProfileSelector key="profiles" onPick={pickProfile} />}
       </AnimatePresence>
 
@@ -140,7 +140,7 @@ function Series() {
         <motion.div initial={{ opacity: 0, scale: 1.03, filter: 'blur(10px)' }} animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} transition={{ duration: 1, ease: EASE }}>
           <Navbar order={order} profileId={profileId} onSwitch={pickProfile} />
           <main>
-            <Hero key={`hero-${profileId}`} onPlay={() => setTrailerOpen(true)} onResume={() => setResumeOpen(true)} profileId={profileId} />
+            <Hero key={`hero-${profileId}`} onPlay={() => { window.dispatchEvent(new Event('jv-start-sound')); setTrailerOpen(true); }} onResume={() => setResumeOpen(true)} profileId={profileId} />
             <ContinueWatching order={order} />
             {order.map((id) => (
               <Scene key={id} id={id} className={id === 'originals' ? '!py-0 sm:!py-0' : ''}>
@@ -154,7 +154,7 @@ function Series() {
 
       <Suspense fallback={null}>
         <AnimatePresence>{playing && <PlayIntro key="intro" onClose={closeIntro} />}</AnimatePresence>
-        <AnimatePresence>{trailerOpen && <SeriesTrailer key="trailer" onClose={() => setTrailerOpen(false)} onExplore={() => { setTrailerOpen(false); requestAnimationFrame(() => scrollTo('#originals', { offset: -72 })); }} />}</AnimatePresence>
+        <AnimatePresence>{trailerOpen && <SeriesTrailer key="trailer" onClose={() => setTrailerOpen(false)} onExplore={() => { setTrailerOpen(false); window.setTimeout(() => scrollTo('#originals', { offset: -72 }), 100); }} />}</AnimatePresence>
         <AnimatePresence>{project && <ProjectModal key="project" project={project} onClose={closeProject} onSwitch={setProject} />}</AnimatePresence>
         <AnimatePresence>{resumeOpen && <ResumeModal key="resume" onClose={closeResume} />}</AnimatePresence>
       </Suspense>
