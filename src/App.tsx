@@ -23,6 +23,7 @@ import { EASE } from './components/fx';
 
 // Overlays are only needed on demand — split them out of the first load.
 const PlayIntro = lazy(() => import('./components/PlayIntro'));
+const SeriesTrailer = lazy(() => import('./components/SeriesTrailer'));
 const ProjectModal = lazy(() => import('./components/ProjectModal'));
 const ResumeModal = lazy(() => import('./components/ResumeModal'));
 
@@ -52,6 +53,7 @@ function Series() {
   const [stage, setStage] = useState<Stage>('opening');
   const [profileId, setProfileId] = useState<ProfileId>(stored ?? 'jv');
   const [playing, setPlaying] = useState(false);
+  const [trailerOpen, setTrailerOpen] = useState(false);
   const [project, setProject] = useState<Project | null>(null);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -138,7 +140,7 @@ function Series() {
         <motion.div initial={{ opacity: 0, scale: 1.03, filter: 'blur(10px)' }} animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} transition={{ duration: 1, ease: EASE }}>
           <Navbar order={order} profileId={profileId} onSwitch={pickProfile} />
           <main>
-            <Hero key={`hero-${profileId}`} onPlay={() => setPlaying(true)} onResume={() => setResumeOpen(true)} profileId={profileId} />
+            <Hero key={`hero-${profileId}`} onPlay={() => setTrailerOpen(true)} onResume={() => setResumeOpen(true)} profileId={profileId} />
             <ContinueWatching order={order} />
             {order.map((id) => (
               <Scene key={id} id={id} className={id === 'originals' ? '!py-0 sm:!py-0' : ''}>
@@ -152,6 +154,7 @@ function Series() {
 
       <Suspense fallback={null}>
         <AnimatePresence>{playing && <PlayIntro key="intro" onClose={closeIntro} />}</AnimatePresence>
+        <AnimatePresence>{trailerOpen && <SeriesTrailer key="trailer" onClose={() => setTrailerOpen(false)} onExplore={() => { setTrailerOpen(false); requestAnimationFrame(() => scrollTo('#originals', { offset: -72 })); }} />}</AnimatePresence>
         <AnimatePresence>{project && <ProjectModal key="project" project={project} onClose={closeProject} onSwitch={setProject} />}</AnimatePresence>
         <AnimatePresence>{resumeOpen && <ResumeModal key="resume" onClose={closeResume} />}</AnimatePresence>
       </Suspense>
