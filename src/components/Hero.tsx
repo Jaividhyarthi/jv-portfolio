@@ -131,9 +131,26 @@ export default function Hero({
           className="relative z-30 mt-3 grid items-center gap-5 overflow-hidden rounded-[27px] border border-[#f16885]/50 bg-[linear-gradient(110deg,#230f19_0%,#1a1119_55%,#1a0a13_100%)] px-5 py-5 shadow-[0_0_38px_rgba(220,45,83,.12)] sm:px-7 lg:grid-cols-[.95fr_1.05fr]"
         >
           <div className="flex items-center gap-4">
-            <div aria-hidden className="relative flex h-24 w-20 shrink-0 items-center justify-center rounded-2xl border border-[#f98da7]/35 bg-[#28131f] text-5xl shadow-[0_0_20px_rgba(250,52,91,.22)] sm:h-28 sm:w-28">
-              <span>🤖</span>
-              <span className="absolute bottom-1 rounded bg-[#3b121e] px-2 text-[9px] font-bold text-white">JV</span>
+            <div aria-hidden="true" className="relative flex h-24 w-20 shrink-0 items-center justify-center sm:h-28 sm:w-28">
+              <svg viewBox="0 0 120 130" className="h-full w-full overflow-visible drop-shadow-[0_0_18px_rgba(255,91,128,.4)]">
+                <defs>
+                  <linearGradient id="robot-shell" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#fff6f7"/><stop offset="1" stopColor="#aa7892"/></linearGradient>
+                  <radialGradient id="robot-screen"><stop stopColor="#342034"/><stop offset="1" stopColor="#120d1c"/></radialGradient>
+                </defs>
+                <rect x="30" y="81" width="60" height="51" rx="22" fill="url(#robot-shell)" stroke="#ff91ac" strokeWidth="2.5"/>
+                <rect x="45" y="96" width="30" height="19" rx="8" fill="#2d1428" stroke="#ef708f" strokeWidth="2"/>
+                <text x="60" y="109" fill="#ffb6cd" fontSize="11" fontWeight="bold" textAnchor="middle">JV</text>
+                <path d="M31 95 Q16 86 13 108 M89 95 Q107 78 112 95" fill="none" stroke="url(#robot-shell)" strokeWidth="13" strokeLinecap="round"/>
+                <circle cx="14" cy="109" r="8" fill="#f8d5df" stroke="#ff829d" strokeWidth="2"/>
+                <circle cx="111" cy="95" r="7" fill="#f8d5df" stroke="#ff829d" strokeWidth="2"/>
+                <rect x="7" y="12" width="106" height="78" rx="37" fill="url(#robot-shell)" stroke="#ff91ac" strokeWidth="3"/>
+                <rect x="19" y="22" width="82" height="58" rx="27" fill="url(#robot-screen)" stroke="#ed7899" strokeWidth="1.8"/>
+                <path d="M36 49 q10 -15 20 0 M65 49 q10 -15 20 0" fill="none" stroke="#ff8aac" strokeWidth="5" strokeLinecap="round"/>
+                <path d="M50 61 q10 11 20 0" fill="none" stroke="#ff8aac" strokeWidth="3" strokeLinecap="round"/>
+                <rect x="3" y="42" width="13" height="24" rx="6" fill="#eea7bd" stroke="#ff648e" strokeWidth="2"/>
+                <rect x="104" y="42" width="13" height="24" rx="6" fill="#eea7bd" stroke="#ff648e" strokeWidth="2"/>
+                <ellipse cx="60" cy="88" rx="24" ry="2" fill="#ed89a3" opacity=".4"/>
+              </svg>
             </div>
             <div className="min-w-0">
               <p className="text-[10px] font-bold uppercase tracking-[.3em] text-[#ff7890] sm:text-xs">MEET MY AI ASSISTANT</p>
