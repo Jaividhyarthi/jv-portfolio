@@ -89,6 +89,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
       >
         <img
           src={profile.portrait.src}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'assets/jv-monogram.svg'; }}
           srcSet={profile.portrait.srcSet}
           sizes="(max-width: 768px) 100vw, 900px"
           alt={profile.portrait.alt}
