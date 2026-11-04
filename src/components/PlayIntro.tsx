@@ -102,11 +102,11 @@ export default function PlayIntro({ onClose }: { onClose: () => void }) {
       >
         <img
           src={profile.portrait.src}
-          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'assets/jv-monogram.svg'; }}
+          
           srcSet={profile.portrait.srcSet}
           sizes="100vw"
           alt=""
-          className="h-[88vh] w-auto max-w-none object-contain [mask-image:linear-gradient(to_bottom,black_60%,transparent)]"
+          className="h-[88vh] w-auto max-w-[95vw] object-contain [mask-image:linear-gradient(to_bottom,black_65%,transparent)]"
         />
       </motion.div>
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_45%,rgba(120,10,25,0.35),transparent_70%)]" />
