@@ -1,211 +1,154 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
-import { achievements, certifications, education, profile, projects, type ProfileId } from '../data/portfolio';
-import { useFinePointer } from '../hooks/useMedia';
+import { useState, type FormEvent } from 'react';
+import { motion } from 'framer-motion';
+import { profile, projects, type ProfileId } from '../data/portfolio';
 import { useSmoothScroll } from '../hooks/smoothScroll';
-import { EASE, Magnetic, Particles } from './fx';
-import { SeriesMark } from './Poster';
 
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.25 } } };
-const item = {
-  hidden: { opacity: 0, y: 28, filter: 'blur(10px)' },
-  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EASE } },
-};
+const specialties = [
+  { icon: '⌘', text: 'AI / ML Systems' },
+  { icon: '▣', text: 'Full-Stack Development' },
+  { icon: '▤', text: 'IoT & Embedded AI' },
+  { icon: '⬡', text: 'Research & Publications' },
+  { icon: '✦', text: 'Hackathons & Products' },
+  { icon: '↗', text: 'Startup & Innovation' },
+];
+const leftRoles = [
+  { icon: '✺', text: 'AI Engineer', top: 'top-[12%]' },
+  { icon: '♙', text: 'Researcher', top: 'top-[39%]' },
+  { icon: '✧', text: 'Entrepreneur', top: 'top-[69%]' },
+];
+const rightRoles = [
+  { icon: '⌘', text: 'Developer', top: 'top-[17%]' },
+  { icon: '↗', text: 'Builder', top: 'top-[46%]' },
+  { icon: '✧', text: 'Student', top: 'top-[77%]' },
+];
+const prompts = ['Show me your projects', 'Your hackathons?', 'About your startup?', 'Why AI & DS?'];
 
-export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => void; onResume: () => void; profileId: ProfileId }) {
-  const ref = useRef<HTMLElement>(null);
-  const fine = useFinePointer();
+export default function Hero({
+  onPlay: _onPlay,
+  onResume: _onResume,
+  profileId: _profileId,
+}: {
+  onPlay: () => void;
+  onResume: () => void;
+  profileId: ProfileId;
+}) {
   const { scrollTo } = useSmoothScroll();
-
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
-  const fade = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const blackout = useTransform(scrollYProgress, [0.35, 1], [0, 1]);
-
-  // pointer parallax (desktop)
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const px = useSpring(mx, { stiffness: 60, damping: 18 });
-  const py = useSpring(my, { stiffness: 60, damping: 18 });
-  const imgRotY = useTransform(px, [-1, 1], [-4, 4]);
-  const imgRotX = useTransform(py, [-1, 1], [3, -3]);
-  const imgShiftX = useTransform(px, [-1, 1], [-10, 10]);
-  const chipX = useTransform(px, [-1, 1], [18, -18]);
-  const chipY = useTransform(py, [-1, 1], [12, -12]);
-  const glowX = useTransform(px, [-1, 1], ['-6%', '6%']);
-
-  const meta = [
-    education[0].period.split(' – ')[0].split(' ')[1] + ' – Present',
-    'B.Tech AI & DS',
-    `${projects.length} Originals`,
-    `${certifications.length} Certifications`,
-  ];
-
-  const floating = [
-    { text: education[0].score, sub: 'B.Tech AI & DS', pos: 'left-[2%] top-[30%]', depth: 1 },
-    { text: `${achievements[0].title}`, sub: achievements[0].org, pos: 'right-[0%] top-[18%]', depth: -1 },
-    { text: 'Python · React · FastAPI', sub: 'Primary stack', pos: 'right-[4%] bottom-[24%]', depth: 0.6 },
-  ];
+  const [prompt, setPrompt] = useState('');
+  const openAssistant = (question?: string) => {
+    const q = (question ?? prompt).trim();
+    if (q) window.dispatchEvent(new CustomEvent('jv-assistant-ask', { detail: q }));
+    setPrompt('');
+    scrollTo('#assistant', { offset: -80 });
+  };
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    openAssistant();
+  };
 
   return (
-    <section
-      id="top"
-      ref={ref}
-      className="relative min-h-[100svh] overflow-hidden"
-      onPointerMove={(e) => {
-        if (!fine) return;
-        mx.set((e.clientX / window.innerWidth) * 2 - 1);
-        my.set((e.clientY / window.innerHeight) * 2 - 1);
-      }}
-    >
-      {/* atmosphere */}
-      <motion.div aria-hidden className="absolute inset-0" style={{ x: glowX }}>
-        <div className="absolute right-[-10%] top-[-10%] h-[90vh] w-[80vw] rounded-full bg-[radial-gradient(closest-side,rgba(229,19,43,0.38),rgba(229,19,43,0.08)_55%,transparent)] blur-2xl lg:right-[-4%] lg:w-[60vw]" />
-        <div className="absolute bottom-[-20%] left-[-10%] h-[70vh] w-[60vw] rounded-full bg-[radial-gradient(closest-side,rgba(90,20,120,0.25),transparent)] blur-2xl" />
-      </motion.div>
-      <Particles className="z-[1]" />
-      <div aria-hidden className="absolute inset-0 z-[1] overflow-hidden">
-        <span className="light-streak left-[40%] top-[22%] w-[50vw]" style={{ animationDelay: '1.2s' }} />
-        <span className="light-streak left-[30%] top-[64%] w-[40vw]" style={{ animationDelay: '3.6s' }} />
-        <span className="light-streak left-[55%] top-[44%] w-[30vw]" style={{ animationDelay: '5.2s' }} />
-      </div>
+    <section id="top" className="relative isolate overflow-hidden bg-[#08070b] text-bone">
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_71%_37%,rgba(123,18,41,.38),transparent_75%),radial-gradient(ellipse_60%_45%_at_35%_85%,rgba(94,14,39,.15),transparent_80%),linear-gradient(120deg,#09080d_10%,#150910_85%)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[.12] [background-image:radial-gradient(rgba(255,255,255,.5)_0.5px,transparent_0.5px)] [background-size:24px_24px]" />
 
-      {/* portrait */}
-      <motion.div
-        className="absolute inset-x-0 top-12 z-[2] flex h-[64svh] items-end justify-center sm:h-[70svh] lg:bottom-0 lg:left-auto lg:right-[3vw] lg:top-20 lg:h-auto lg:w-[54vw] xl:right-[6vw] xl:w-[48vw]"
-        style={{ y: imgY, scale: imgScale, opacity: fade }}
-      >
-        <motion.div
-          className="relative h-full w-full lg:h-[86vh]"
-          style={{ rotateY: imgRotY, rotateX: imgRotX, x: imgShiftX, transformPerspective: 1200 }}
-          initial={{ clipPath: 'inset(100% -30% -10% -30%)', opacity: 0 }}
-          animate={{ clipPath: 'inset(-30% -30% -10% -30%)', opacity: 1 }}
-          transition={{ duration: 1.6, ease: EASE, delay: 0.1 }}
-        >
-          {/* rim light ring */}
-          <div aria-hidden className="absolute bottom-[8%] left-1/2 h-[78%] w-[78%] -translate-x-1/2 rounded-full border border-crimson-2/20 shadow-[0_0_120px_rgba(229,19,43,0.35),inset_0_0_80px_rgba(229,19,43,0.18)]" />
-          <img
-            src={profile.portrait.src}
-          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'assets/jv-monogram.svg'; }}
-            srcSet={profile.portrait.srcSet}
-            sizes="(max-width: 1024px) 100vw, 54vw"
-            alt={profile.portrait.alt}
-
-            className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] [mask-image:linear-gradient(to_bottom,black_62%,transparent_97%)]"
-          />
-          {/* crimson rim light on the image edge */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_80%_30%,rgba(255,61,90,0.16),transparent_70%)] mix-blend-screen" />
-
-          {/* floating UI chips */}
-          {floating.map((f, i) => (
-            <FloatChip key={f.text} {...f} index={i} mx={chipX} my={chipY} />
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* readability gradients */}
-      <div aria-hidden className="absolute inset-x-0 top-[40svh] z-[3] h-[36svh] bg-gradient-to-b from-transparent via-ink/70 to-ink lg:hidden" />
-      <div aria-hidden className="absolute inset-0 z-[3] hidden bg-[linear-gradient(90deg,var(--color-ink)_0%,rgba(7,7,10,0.7)_32%,transparent_58%)] lg:block" />
-      <div aria-hidden className="absolute inset-x-0 bottom-0 z-[3] h-48 bg-gradient-to-t from-ink to-transparent" />
-
-      {/* copy */}
-      <motion.div
-        className="gutter relative z-[4] flex min-h-[100svh] flex-col justify-end pb-16 pt-[54svh] sm:pb-20 lg:max-w-[52vw] lg:justify-center lg:pb-0 lg:pt-24"
-        style={{ y: textY, opacity: fade }}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.div variants={item} className="mb-3 text-lg">
-          <SeriesMark />
-        </motion.div>
-        <motion.h1 variants={item} className="font-display leading-[0.82] tracking-[0.02em] text-bone" style={{ fontSize: 'clamp(4rem, 12vw, 11rem)' }}>
-          <span className="shimmer-text">{profile.firstName}</span>
-        </motion.h1>
-        <motion.p variants={item} className="mt-1 font-sans text-sm font-bold tracking-[0.62em] text-crimson-2 sm:text-base">
-          {profile.seriesTag}
-        </motion.p>
-
-        <motion.div variants={item} className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] font-medium text-mist">
-          <span className="rounded border border-white/25 px-1.5 py-px text-[10px] font-bold tracking-wider text-bone">AI·DS</span>
-          {meta.map((m, i) => (
-            <span key={m} className="flex items-center gap-3">
-              {i > 0 && <span className="h-1 w-1 rounded-full bg-smoke" />}
-              {m}
-            </span>
-          ))}
-        </motion.div>
-
-        <motion.p variants={item} className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-bone/90 sm:text-xs sm:tracking-[0.34em]">
-          {profile.tagline.join(' • ')}
-        </motion.p>
-
-        <motion.p variants={item} className="mt-4 max-w-xl text-[15px] leading-relaxed text-bone/80 sm:text-base">
-          {profile.intro}
-        </motion.p>
-
-        <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
-          <Magnetic>
-            <button
-              type="button"
-              data-cursor="play"
-              onClick={onPlay}
-              className="flex min-h-12 items-center gap-3 rounded-md bg-bone px-6 py-3 text-[15px] font-bold text-ink transition hover:bg-white sm:px-8"
-            >
-              <span className="text-lg">▶</span> Play Intro
-            </button>
-          </Magnetic>
-          <Magnetic>
-            {profileId === 'recruiter' ? (
-              <button type="button" onClick={onResume} className="glass flex min-h-12 items-center gap-3 rounded-md px-6 py-3 text-[15px] font-semibold text-bone transition hover:bg-white/15 sm:px-8">
-                <span className="text-lg">⤓</span> View Resume
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => scrollTo('#originals')}
-                className="glass flex min-h-12 items-center gap-3 rounded-md px-6 py-3 text-[15px] font-semibold text-bone transition hover:bg-white/15 sm:px-8"
-              >
-                <span className="text-xl leading-none">＋</span> My Work
-              </button>
-            )}
-          </Magnetic>
-          <button
-            type="button"
-            onClick={() => scrollTo('#about')}
-            aria-label="More info"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 text-lg text-bone transition hover:border-bone hover:bg-white/10"
+      <div className="gutter relative mx-auto max-w-[1750px] pb-10 pt-[92px] sm:pt-[105px] lg:pt-[100px]">
+        <div className="grid min-h-[520px] items-center gap-6 lg:grid-cols-[1.02fr_.98fr] xl:min-h-[580px]">
+          <motion.div
+            initial={{ opacity: 0, x: -36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: .85 }}
+            className="relative z-20 pt-6 lg:pt-0"
           >
-            ⓘ
-          </button>
-        </motion.div>
-      </motion.div>
+            <p className="font-semibold tracking-[.25em] text-[#ff6b88] text-xs sm:text-sm">V. JAIVIDHYARTHI (JV)</p>
+            <p className="mt-3 text-[10px] font-bold uppercase tracking-[.37em] text-white/75 sm:text-xs">AI &amp; DATA SCIENCE ENGINEER</p>
+            <h1 className="mt-7 max-w-[780px] font-sans font-black leading-[1.04] tracking-[-.04em] text-white" style={{ fontSize: 'clamp(2.65rem,4.25vw,5rem)' }}>
+              Don’t just read my<br />portfolio. <span className="font-serif font-normal italic tracking-[-.035em] text-[#ff9cae] drop-shadow-[0_0_24px_rgba(255,90,125,.45)]">Interact with it.</span>
+            </h1>
+            <p className="mt-5 max-w-[660px] text-sm leading-[1.65] text-white/80 sm:text-base">
+              Hi, I’m JV — a B.Tech AI &amp; Data Science student, researcher, builder, and aspiring entrepreneur. I build AI systems, ship real-world solutions, and explore the intersection of research, product, and impact.
+            </p>
+            <div className="mt-5 flex max-w-[760px] flex-wrap gap-2">
+              {specialties.map(chip => (
+                <span key={chip.text} className="flex items-center gap-2 rounded-full border border-[#ff8298]/35 bg-[#1b1119]/75 px-3 py-2 text-[11px] font-medium text-white/85 backdrop-blur-sm sm:text-xs">
+                  <span className="text-base leading-none text-[#ff718e]">{chip.icon}</span>{chip.text}
+                </span>
+              ))}
+            </div>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <button type="button" onClick={() => scrollTo('#originals', { offset: -75 })} className="rounded-full border border-[#ff9aa9] bg-gradient-to-r from-[#c92042] to-[#ed4261] px-7 py-3.5 text-sm font-bold text-white shadow-[0_0_28px_rgba(239,47,84,.35)] transition hover:scale-[1.03] hover:shadow-[0_0_38px_rgba(239,47,84,.5)]">
+                ▶ &nbsp; Explore My Work
+              </button>
+              <button type="button" onClick={() => openAssistant()} className="rounded-full border border-[#ed8196]/60 bg-black/30 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#e93a57]/15">
+                ◉ &nbsp; Ask My AI Assistant
+              </button>
+            </div>
+          </motion.div>
 
-      <motion.div aria-hidden className="pointer-events-none absolute inset-0 z-[5] bg-ink" style={{ opacity: blackout }} />
+          <motion.div
+            initial={{ opacity: 0, x: 32, scale: .96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1.1, delay: .1 }}
+            className="relative mx-auto flex h-[370px] w-full max-w-[740px] items-end justify-center sm:h-[500px] lg:h-[600px]"
+          >
+            {/* Glowing, circular film-poster halo. The photo itself is a transparent cutout. */}
+            <div aria-hidden className="absolute left-1/2 top-[44%] h-[77%] max-h-[500px] w-[77%] max-w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff718c]/70 shadow-[0_0_30px_rgba(255,63,93,.3),0_0_125px_rgba(170,31,62,.24),inset_0_0_80px_rgba(255,61,90,.08)]" />
+            <div aria-hidden className="absolute left-1/2 top-[42%] h-[82%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(192,32,65,.22),transparent_68%)] blur-2xl" />
+
+            <img
+              src="/assets/jv-home-cutout.webp"
+              alt="Portrait of Jaividhyarthi"
+              onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = profile.portrait.src; }}
+              className="relative z-10 h-[100%] w-[80%] object-contain object-bottom drop-shadow-[0_14px_55px_rgba(0,0,0,.55)] [mask-image:linear-gradient(to_bottom,#000_0%,#000_72%,transparent_100%)]"
+            />
+            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[18%] bg-gradient-to-t from-[#10080f] to-transparent" />
+
+            {leftRoles.map(role => (
+              <div key={role.text} className={`absolute left-0 z-30 hidden items-center gap-2 rounded-2xl border border-[#ff8298]/45 bg-[#28141d]/75 px-4 py-2.5 text-xs text-white shadow-[0_0_22px_rgba(243,62,95,.09)] backdrop-blur-sm sm:flex ${role.top}`}>
+                <span className="text-lg text-[#ff90a1]">{role.icon}</span>{role.text}
+              </div>
+            ))}
+            {rightRoles.map(role => (
+              <div key={role.text} className={`absolute right-0 z-30 hidden items-center gap-2 rounded-2xl border border-[#ff8298]/45 bg-[#28141d]/75 px-4 py-2.5 text-xs text-white shadow-[0_0_22px_rgba(243,62,95,.09)] backdrop-blur-sm sm:flex ${role.top}`}>
+                <span className="text-lg text-[#ff90a1]">{role.icon}</span>{role.text}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Always-visible teaser, separate from the full chat section below. */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .8, delay: .35 }}
+          className="relative z-30 mt-3 grid items-center gap-5 overflow-hidden rounded-[27px] border border-[#f16885]/50 bg-[linear-gradient(110deg,#230f19_0%,#1a1119_55%,#1a0a13_100%)] px-5 py-5 shadow-[0_0_38px_rgba(220,45,83,.12)] sm:px-7 lg:grid-cols-[.95fr_1.05fr]"
+        >
+          <div className="flex items-center gap-4">
+            <div aria-hidden className="relative flex h-24 w-20 shrink-0 items-center justify-center rounded-2xl border border-[#f98da7]/35 bg-[#28131f] text-5xl shadow-[0_0_20px_rgba(250,52,91,.22)] sm:h-28 sm:w-28">
+              <span>🤖</span>
+              <span className="absolute bottom-1 rounded bg-[#3b121e] px-2 text-[9px] font-bold text-white">JV</span>
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-[.3em] text-[#ff7890] sm:text-xs">MEET MY AI ASSISTANT</p>
+              <h2 className="mt-1 font-sans text-[clamp(1.4rem,2.35vw,2.5rem)] font-bold leading-tight tracking-tight text-white">
+                Ask My <span className="text-[#ff8fa4]">AI Assistant</span>
+              </h2>
+              <p className="mt-1 max-w-lg text-xs leading-relaxed text-white/70 sm:text-sm">Explore my projects, achievements, skills and experience through an interactive portfolio assistant.</p>
+            </div>
+          </div>
+          <div className="min-w-0">
+            <form onSubmit={submit} className="flex items-center gap-2 rounded-full border border-white/35 bg-[#211d27]/80 p-1.5 pl-4 shadow-[inset_0_0_12px_rgba(255,255,255,.07)]">
+              <span className="text-xl text-white/70">◉</span>
+              <input value={prompt} onChange={e => setPrompt(e.target.value)} aria-label="Ask my portfolio assistant" placeholder="Ask about my projects, skills, internships, or startup..." className="min-w-0 flex-1 bg-transparent py-2 text-sm text-white outline-none placeholder:text-white/50" />
+              <button type="submit" aria-label="Ask assistant" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#eb4b6b] text-xl text-white shadow-[0_0_15px_rgba(246,70,102,.5)] hover:bg-[#ff647e]">➜</button>
+            </form>
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <span className="mr-1 text-[11px] font-semibold text-[#ff718c]">✦ Try asking:</span>
+              {prompts.map(q => <button key={q} type="button" onClick={() => openAssistant(q)} className="rounded-full border border-[#e87a93]/40 px-3 py-1.5 text-[11px] text-white/85 transition hover:border-[#ff8298] hover:text-white">{q}</button>)}
+            </div>
+          </div>
+        </motion.div>
+
+        <p className="sr-only">{projects.length} projects in the portfolio. Select a section to explore.</p>
+      </div>
     </section>
   );
 }
-
-type MV = ReturnType<typeof useTransform<number, number>>;
-
-function FloatChip({ text, sub, pos, depth, index, mx, my }: { text: string; sub: string; pos: string; depth: number; index: number; mx: MV; my: MV }) {
-  const x = useTransform(mx, (n: number) => n * depth);
-  const y = useTransform(my, (n: number) => n * depth);
-  return (
-    <motion.div
-      className={`glass absolute hidden rounded-xl px-4 py-2.5 md:block ${pos}`}
-      style={{ x, y }}
-      initial={{ opacity: 0, filter: 'blur(6px)' }}
-      animate={{ opacity: 1, filter: 'blur(0px)' }}
-      transition={{ duration: 0.9, delay: 1.2 + index * 0.18, ease: EASE }}
-    >
-      <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 5 + index, repeat: Infinity, ease: 'easeInOut' }}>
-        <p className="text-sm font-semibold text-bone">{text}</p>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-mist">{sub}</p>
-      </motion.div>
-    </motion.div>
-  );
-}
-
