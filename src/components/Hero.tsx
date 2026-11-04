@@ -91,7 +91,8 @@ export default function Hero({
             <div aria-hidden className="absolute left-1/2 top-[47%] h-[80%] aspect-square max-h-[515px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(176,20,58,.18),transparent_67%)] blur-xl" />
             <motion.div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-[47%] aspect-square h-[76%] max-h-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff718c]/65 shadow-[0_0_50px_rgba(244,47,84,.26),inset_0_0_60px_rgba(255,61,90,.07)]"
+              style={{ x: "-50%", y: "-50%" }}
+              className="pointer-events-none absolute left-1/2 top-[47%] aspect-square h-[76%] max-h-[500px] rounded-full border border-[#ff718c]/65 shadow-[0_0_50px_rgba(244,47,84,.26),inset_0_0_60px_rgba(255,61,90,.07)]"
               animate={{ rotate: 360 }}
               transition={{ duration: 38, ease: 'linear', repeat: Infinity }}
             >
@@ -101,7 +102,8 @@ export default function Hero({
 
             {/* Orbiting role cards remain upright as their orbit turns. */}
             <motion.div
-              className="pointer-events-none absolute left-1/2 top-[47%] z-30 hidden aspect-square h-[81%] max-h-[540px] -translate-x-1/2 -translate-y-1/2 sm:block"
+              style={{ x: "-50%", y: "-50%" }}
+              className="pointer-events-none absolute left-1/2 top-[47%] z-30 hidden aspect-square h-[81%] max-h-[540px] sm:block"
               animate={{ rotate: 360 }}
               transition={{ duration: 52, ease: 'linear', repeat: Infinity }}
             >
