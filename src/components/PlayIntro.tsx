@@ -102,6 +102,7 @@ export default function PlayIntro({ onClose }: { onClose: () => void }) {
       >
         <img
           src={profile.portrait.src}
+          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'assets/jv-monogram.svg'; }}
           srcSet={profile.portrait.srcSet}
           sizes="100vw"
           alt=""
