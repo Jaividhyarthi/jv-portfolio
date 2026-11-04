@@ -22,7 +22,7 @@ const orbitRoles = [
 const prompts = ['Show me your projects', 'Your hackathons?', 'About your startup?', 'Why AI & DS?'];
 
 export default function Hero({
-  onPlay: _onPlay,
+  onPlay,
   onResume: _onResume,
   profileId: _profileId,
 }: {
@@ -72,8 +72,8 @@ export default function Hero({
               ))}
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <button type="button" onClick={() => scrollTo('#originals', { offset: -75 })} className="rounded-full border border-[#ff9aa9] bg-gradient-to-r from-[#c92042] to-[#ed4261] px-7 py-3.5 text-sm font-bold text-white shadow-[0_0_28px_rgba(239,47,84,.35)] transition hover:scale-[1.03] hover:shadow-[0_0_38px_rgba(239,47,84,.5)]">
-                ▶ &nbsp; Explore My Work
+              <button type="button" onClick={onPlay} className="rounded-full border border-[#ff9aa9] bg-gradient-to-r from-[#c92042] to-[#ed4261] px-7 py-3.5 text-sm font-bold text-white shadow-[0_0_28px_rgba(239,47,84,.35)] transition hover:scale-[1.03] hover:shadow-[0_0_38px_rgba(239,47,84,.5)]">
+                ▶ &nbsp; Watch My Trailer
               </button>
               <button type="button" onClick={() => openAssistant()} className="rounded-full border border-[#ed8196]/60 bg-black/30 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#e93a57]/15">
                 ◉ &nbsp; Ask My AI Assistant
