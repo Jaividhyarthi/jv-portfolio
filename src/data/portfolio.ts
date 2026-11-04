@@ -67,9 +67,9 @@ export const profile = {
   },
   "resumePdf": "assets/JV_Complete_Resume.pdf",
   "portrait": {
-    "src": "assets/jv-monogram.svg",
+    "src": "assets/jv-portrait.jpg",
     "srcSet": "",
-    "alt": "JV monogram"
+    "alt": "Portrait of Jaividhyarthi"
   },
   "interests": [
     "AI Research",
