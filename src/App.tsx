@@ -59,6 +59,22 @@ function Series() {
 
   const order = viewerProfiles.find((p) => p.id === profileId)!.order;
 
+  // Restore the top when a profile opens instead of preserving a previous section.
+  useEffect(() => {
+    if (stage !== 'home') return;
+    const frame = requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      scrollTo(0, { offset: 0, immediate: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [stage, profileId, scrollTo]);
+
+  useEffect(() => {
+    const old = history.scrollRestoration;
+    history.scrollRestoration = 'manual';
+    return () => { history.scrollRestoration = old; };
+  }, []);
+
   useEffect(() => {
     if (stage === 'home') return;
     lock();
@@ -79,7 +95,8 @@ function Series() {
       } else {
         const p = viewerProfiles.find((v) => v.id === id)!;
         setToast(`Now watching as ${p.name} — ${p.blurb.toLowerCase()}`);
-        scrollTo(0, { offset: 0 });
+        window.scrollTo(0, 0);
+        scrollTo(0, { offset: 0, immediate: true });
       }
     },
     [stage, scrollTo],
