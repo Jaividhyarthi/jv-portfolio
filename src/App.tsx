@@ -49,7 +49,7 @@ export default function App() {
 
 function Series() {
   const stored = readStoredProfile();
-  const [stage, setStage] = useState<Stage>(stored ? 'home' : 'opening');
+  const [stage, setStage] = useState<Stage>('opening');
   const [profileId, setProfileId] = useState<ProfileId>(stored ?? 'jv');
   const [playing, setPlaying] = useState(false);
   const [project, setProject] = useState<Project | null>(null);
