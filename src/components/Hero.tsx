@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { projects, type ProfileId } from '../data/portfolio';
+import { profile, projects, type ProfileId } from '../data/portfolio';
 import { useSmoothScroll } from '../hooks/smoothScroll';
 
 const specialties = [
@@ -93,11 +93,20 @@ export default function Hero({
             <div aria-hidden className="absolute left-1/2 top-[44%] h-[77%] max-h-[500px] w-[77%] max-w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ff718c]/70 shadow-[0_0_30px_rgba(255,63,93,.3),0_0_125px_rgba(170,31,62,.24),inset_0_0_80px_rgba(255,61,90,.08)]" />
             <div aria-hidden className="absolute left-1/2 top-[42%] h-[82%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(192,32,65,.22),transparent_68%)] blur-2xl" />
 
+            {/* Actual silhouette traced from the user-supplied transparent cutout.
+                Uses the existing photo file so no separate image upload is needed. */}
+            <svg aria-hidden="true" width="0" height="0" className="absolute">
+              <defs>
+                <clipPath id="jv-cutout-shape" clipPathUnits="objectBoundingBox">
+                  <path d="M 0.385 0.096 L 0.341 0.137 L 0.324 0.169 L 0.312 0.205 L 0.303 0.273 L 0.286 0.322 L 0.283 0.363 L 0.294 0.385 L 0.292 0.421 L 0.294 0.437 L 0.300 0.443 L 0.297 0.459 L 0.300 0.454 L 0.306 0.459 L 0.306 0.492 L 0.274 0.557 L 0.280 0.566 L 0.280 0.609 L 0.254 0.612 L 0.245 0.607 L 0.242 0.552 L 0.242 0.596 L 0.236 0.620 L 0.166 0.686 L 0.064 0.833 L 0.029 0.896 L 0.000 0.937 L 0.000 0.997 L 0.997 0.997 L 0.997 0.781 L 0.948 0.702 L 0.910 0.661 L 0.854 0.620 L 0.805 0.596 L 0.787 0.593 L 0.773 0.585 L 0.770 0.557 L 0.735 0.462 L 0.714 0.366 L 0.697 0.320 L 0.694 0.254 L 0.685 0.230 L 0.676 0.219 L 0.668 0.189 L 0.653 0.169 L 0.647 0.153 L 0.621 0.120 L 0.592 0.096 L 0.560 0.079 L 0.522 0.068 L 0.464 0.068 L 0.405 0.085 Z" />
+                </clipPath>
+              </defs>
+            </svg>
             <img
-              src="/assets/jv-home-cutout.webp"
-              alt="Portrait of Jaividhyarthi"
-              onError={e => { e.currentTarget.onerror = null; e.currentTarget.style.visibility = 'hidden'; }}
-              className="relative z-10 h-[100%] w-[80%] object-contain object-bottom drop-shadow-[0_14px_55px_rgba(0,0,0,.55)] [mask-image:linear-gradient(to_bottom,#000_0%,#000_72%,transparent_100%)]"
+              src={profile.portrait.src}
+              alt="Portrait of Jaividhyarthi, visually cut out from its original background"
+              style={{ aspectRatio: '343 / 366', clipPath: 'url(#jv-cutout-shape)' }}
+              className="relative z-10 h-full w-auto max-w-full object-fill drop-shadow-[0_14px_55px_rgba(0,0,0,.55)] [mask-image:linear-gradient(to_bottom,#000_0%,#000_72%,transparent_100%)]"
             />
             <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[18%] bg-gradient-to-t from-[#10080f] to-transparent" />
 
